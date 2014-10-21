@@ -307,7 +307,7 @@ function generaGRTD1() {
     //detectaSizeMobil();
 }
 
-function generaGRTD2() {
+function generaGRTD2(){
     $("#dForma").html("");
     var gen = "";
     gen += '<div id="tGRTD" class="tGRTD" style="width:80%; margin:0 auto; height:100%;">';
@@ -629,6 +629,7 @@ function fnRotacion2(atr) {
 }
 
 /*Función para obtener de la base de datos la prodcutividad de cada concepto del grtd*/
+
 function getInfoGRTD() {
     ajaxResponseInfo("grtd", '{}', 1);
 }
@@ -640,6 +641,7 @@ function upGRTD() {
 }
 
 /*Función para obtener de la base de datos el estado de tiempo de cada agente*/
+
 function getAgentesEstado() {
     ajaxResponseInfo("getAgentesEstado", '{}', 2);
 }
@@ -658,8 +660,11 @@ function ajaxResponseInfo(uri, dat, type) {
         data: dat,
         dataType: "json",
         success: function (msg) {
+
             var obj = new Object();
+
             obj = eval(msg.d);
+
             if (type == 1) {
                 setInformation(obj);
             }
