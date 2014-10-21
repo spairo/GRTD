@@ -83,14 +83,11 @@ function getInfoGRTD() {
 
 function ajaxResponseInfo() {
 
-    var data = { op : "grtd", cUmbral: 1800  }
-
     $.ajax({
-        type: "POST",
+        type: 'POST',
         url: 'api/rest.php',
-        contentType: "application/json; charset=utf-8",
-        data: data,
-        dataType: "json",
+        data : { op : 'grtd', cUmbral : '1800' },
+        dataType: 'json',
         success: function (msg) {
 
             console.info(msg);
