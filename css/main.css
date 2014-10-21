@@ -150,3 +150,17 @@ h1 small{
     display: block;
  		text-align: center;
 	}
+
+  /* Modal */
+
+  .modal{
+
+  }
+    .modal .modal-header{
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      background: #EF7955;
+    }
+    .modal .modal-title{
+      color: #fff;
+    }
