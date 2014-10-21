@@ -1,0 +1,726 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+<title>
+	Supervisor Interjet
+</title><link rel="stylesheet" href="Styles/rotacion.css" type="text/css" media="screen" /><link type="text/css" rel="Stylesheet" href="Styles/general.css" media="screen" /><link type="text/css" rel="Stylesheet" href="Styles/grtd.css" media="screen" /><link type="text/css" rel="Stylesheet" href="Styles/tabs.css" /><link type="text/css" rel="Stylesheet" href="Styles/jquery-ui-1.10.2.custom.css" /><link type="text/css" rel="Stylesheet" href="Styles/msgBoxLight.css" />
+    <!--<link type="text/css" rel="Stylesheet" href="Styles/index.css" />-->
+    <!--[if IE]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<link rel="stylesheet" type="text/css" href="/lab/flip/flip_ie.css" />
+		<![endif]-->
+
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-ui-1.10.2.custom.js"></script>
+    <script type="text/javascript" src="Scripts/jqueryExplode.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.effects.slide.js"></script>
+    <script type="text/javascript" src="Scripts/flip.js"></script>
+    <script type="text/javascript" src="Scripts/grtdHorario.js" ></script>
+    <script type="text/javascript" src="Scripts/general.js" ></script>
+    <script type="text/javascript" src="Scripts/tabs.js" ></script>
+    <script type="text/javascript" src="Scripts/date.js" ></script>
+    <script type="text/javascript" src="Scripts/jquery.msgBox.js" ></script>
+    <!--<script type="text/javascript" src="Scripts/escalados.js" ></script>-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1" />    -->
+</head>
+<body class="body">
+    <!--1 Comienza contedor principal, contiene a todos los divs y elementos que conforman la solución-->
+    <div id="contenedorGeneral">
+        <!--2 Comienza div que genera en el encabezado de la solución-->
+        <div id="dHeader" class="hola">
+            <div id="dHeaderIzq">
+                <table>
+                  <tr>
+                    <td>
+                      <div style="font-style:italic;">Estatus&nbsp;Twitter:</div>
+                    </td>
+                    <td>
+                      <div id="tw" style="font-size:12px; color: #FFFFFF; display:none"><table><tr><td><img alt="Status Servicio" src="Images/btnverde.png" width="16px" height="16px" /></td><td style="padding-bottom:1px;">Servicio Normal</td>
+
+                      </tr></table></div>
+                      <div id="dm" style="font-size:12px; color: #FFFFFF; display:none"><table><tr><td><img alt="Status Servicio" src="Images/btnrojo.png" width="16px" height="16px" /></td><td style="padding-bottom:1px;">Sin Servicio</td></tr></table></div>
+                      <div id="inte" style="font-size:12px; color: #FFFFFF; display:none"><table><tr><td><img alt="Status Servicio" src="Images/btnamarillo.png" width="16px" height="16px" /></td><td style="padding-bottom:1px; font-family: 'Movistar Text';">Servicio Intermitente</td></tr></table></div>
+                    </td>
+                    <td>
+                      <div style="font-style:italic;">| Estatus Facebook</div>
+                    </td>
+                    <td>
+                        &nbsp;<img alt="Status Servicio" src="Images/btnverde.png" width="16px" height="16px" /> <label id="labelStFb">Servicio Normal</label>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+            <div id="dHeaderDer"></div>
+        </div>
+        <!--2 Termina div que genera en el encabezado de la solución-->
+
+        <!--3 Comienza div que genera el área de logueo y cierre de sesión de la solución-->
+        <div id="dLogin">
+            <div id="divLogin1"><span id="sUsuario"></span></div>
+            <div id="divLogin2"><span id="sClose" role="8">Cerrar Sesión</span><span id="sLogin">Iniciar Sesión</span></div>
+        </div>
+        <!--3 Termina div que genera el área de logueo y cierre de sesión de la solución-->
+
+        <!--4 Comienza div que muestra el menu -->
+        <div id="dMenuMain" style="width:100%; height:26px;">
+            <div id="dMenuL"><span id="labelGRTD">GRTD</span></div>
+            <div id="dMenu">
+                <ul>
+			        <li id="mCasos" role="1" class="dMen" title="Menu Casos"><span>Buscar Casos</span></li>
+			        <li id="mDescartar" role="2" class="dMen" title="Menu Monitor & Gestión"><span>Monitor & Gestión</span></li>
+                    <li id="mEscalados" role="3" class="dMen" title="Menu Casos Escalados"><span>Mails Escalados</span></li>
+                    <!--<li id="mPublicar" role="4" class="dMen" title="Tweets y DM's enviados"><span>Publicar Tuits</span></li>-->
+                    <li id="mAlertas" role="5" class="dMen" title="Cerrar Casos"><span>Cerrar Casos</span></li>
+                    <li id="mABC" role="6" class="dMen" title="Menu Altas y Cambios"><span>Altas y Cambios</span></li>
+                    <!--<li id="mRepor" role="7" class="dMen" title="Ir a Reportes"><span id="reportes">Ver Reportes Históricos</span></li>-->
+
+		        </ul>
+            </div>
+            <div id="dMenuR"></div>
+        </div>
+        <!--4 Termina div que muestra el menu-->
+
+        <!--5 Comienza div que muestra los logos de summer y telefónica-->
+        <div id="dLogos">
+            <div class="logos1"><span class="pclabelReport">GRTD</span><br /><span class="pclabelMulti">Summer</span></div>
+            <div class="logos2"></div>
+        </div>
+        <!--5 Termina div que muestra los logos de summer y telefónica-->
+
+        <!--6 Comienza div que contiene el área de menu y cuerpo de grtd de la solución-->
+        <div id="dContenedorMain">
+            <!--7 Comienza div que muestra el grtd-->
+            <div id="dForma">
+            </div>
+            <!--7 Termina div que muestra el grtd-->
+
+            <!--8 Comienza div que muestra la seccion de casos-->
+            <div id="dCasos">
+                <div id="dCasosBusca">
+                    <table style="width:100%;">
+                        <tr class="thBusca">
+                            <td colspan="3" style="font-weight:bold; text-align:left; font-size:18px;">Buscar Casos</td>
+                            <!--<td class="tdCasosD"><img id="btnBuscaCaso" src="Images/btnSearch.png" style="cursor:pointer;" alt="" /></td>-->
+                            <td rowspan="5">Selecciona un Canal<br /><img id="btnBuscaTw" src="Images/tw48.png" style="cursor:pointer;" alt="Buscar en Twitter" title="Buscar en Twitter" /><br /><img id="btnBuscaFb" src="Images/fb48.png" style="cursor:pointer;" alt="Buscar en Facebook" title="Buscar en Facebook" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="height:20px;"></td>
+                        </tr>
+                        <tr>
+                            <td class="dmUser">Usuario: </td>
+                            <td><input type="text" id="txtUser" value="" maxlength="30" class="inputsCasos" /></td>
+
+                        </tr>
+                        <tr>
+                            <td class="dmUser">DN: </td>
+                            <td><input type="text" id="txtDn" value="" maxlength="10" class="inputsCasos" /></td>
+
+                        </tr>
+                        <tr>
+                            <td class="dmUser">Mail: </td>
+                            <td><input type="text" id="txtMail" value="" maxlength="50" class="inputsCasos" /></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="3"><span id="spValCasosBus" class="valCasosBus"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="dCasosGenera">
+                    <div id="dCasos1">
+                        <div id="dCasosInfo1">
+                            <div id="dCasosAvatar">
+                                <table>
+                                    <tr>
+                                        <td><img src="" alt="" id="dImagen" /></td>
+                                        <td class="followNegrita cAvat"><span id="usuarioTuit"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="dCasosFollow">
+                                <ul class="cFollow">
+                                    <li><span id="dTweets"></span></li>
+                                    <li><span id="dFollowing"></span></li>
+                                    <li><span id="dFollowers"></span></li>
+                                </ul>
+                            </div>
+                            <div id="dBiografia"></div>
+                        </div>
+                        <div id="dCasosInfo2">
+                            <div id="dCasosDatos1">
+                                <table style="height:100%; margin:0 auto; text-align:center;">
+                                    <tr>
+                                        <td style="text-align:center;">I</td>
+                                    </tr>
+                                    <tr>
+                                        <td>n</td>
+                                    </tr>
+                                    <tr>
+                                        <td>f</td>
+                                    </tr>
+                                    <tr>
+                                        <td>o</td>
+                                    </tr>
+                                    <tr>
+                                        <td>r</td>
+                                    </tr>
+                                    <tr>
+                                        <td>m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>a</td>
+                                    </tr>
+                                    <tr>
+                                        <td>c</td>
+                                    </tr>
+                                    <tr>
+                                        <td>i</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ó</td>
+                                    </tr>
+                                    <tr>
+                                        <td>n</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="dCasosDatos2">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dCasos2">
+                        <div id="dCasos2Header"></div>
+                        <div id="dCasos2Cont"></div>
+                        <!--<div id="dCasos2Footer"></div>-->
+                    </div>
+                </div>
+            </div>
+            <!--8 Termina div que muestra la seccion de casos-->
+            <!--9 Comienza div que muestra la seccion de descartar-->
+            <div id="dDescartar">
+                <div id="dDescartarH">
+                    <span id="sDescHeader"><img id="btnDesT" src="Images/tw32.png" style="cursor:pointer;" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="btnDesF" src="Images/fb32.png" style="cursor:pointer;" alt="" /></span>
+                </div>
+                <div id="dDescartarT">
+                    <div id="desBusL" style="width:71%; float:left;">
+                    <div id="TabbedPanels1" class="TabbedPanels">
+                      <ul class="TabbedPanelsTabGroup">
+                        <li id="tdsTodos" class="TabbedPanelsTab" tabindex="0">Todos</li>
+                        <li id="tdsAsi" class="TabbedPanelsTab" tabindex="0">Asignados</li>
+                        <li id="tdsxAsi" class="TabbedPanelsTab" tabindex="0">Por asignar</li>
+                        <li id="tdsDs" class="TabbedPanelsTab" tabindex="0">Descartados</li>
+                      </ul>
+                      <div class="TabbedPanelsContentGroup">
+                        <div id="" class="TabbedPanelsContent">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="txtDesBus cero" role="cero" placeholder="Buscar" style="color:#06768D" /></td>
+                                <td><img class="imgDesBus cero" role="cero" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="sDesBuscero" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="dsTodos" class="cTab"></div>
+                            <!--<div id="dtVer1" class="dVerM"><span id="vert1" class="ctVerM">Ver Más</span></div>-->
+                        </div>
+                        <div id="Div1" class="TabbedPanelsContent">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="txtDesBus uno" role="uno" placeholder="Buscar" style="color:#06768D" /></td>
+                                <td><img class="imgDesBus uno" role="uno" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="sDesBusuno" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="dsAsi" class="cTab"></div>
+                            <!--<div id="dtVer2" class="dVerM"><span id="vert2" class="ctVerM">Ver Más</span></div>-->
+                        </div>
+                        <div id="Div2" class="TabbedPanelsContent">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="txtDesBus dos" role="dos" placeholder="Buscar" style="color:#06768D" /></td>
+                                <td><img class="imgDesBus dos" role="dos" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="sDesBusdos" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="dsxAsi" class="cTab"></div>
+                            <!--<div id="dtVer3" class="dVerM"><span id="vert3" class="ctVerM">Ver Más</span></div>-->
+                        </div>
+                        <div id="Div3" class="TabbedPanelsContent">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="txtDesBus tres" role="tres" placeholder="Buscar" style="color:#06768D" /></td>
+                                <td><img class="imgDesBus tres" role="tres" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="sDesBustres" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="dsDs" class="cTab"></div>
+                            <!--<div id="dtVer4" class="dVerM"><span id="vert4" class="ctVerM">Ver Más</span></div>-->
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div id="desBusC" style="width:2%; float:left;"></div>
+                    <div id="desBusR" style="width:25%; float:right;">
+                        <div id="Div4" class="TabbedPanels">
+                            <ul class="TabbedPanelsTabGroup">
+                                <li id="Li2" class="TabbedPanelsTab" tabindex="0">Detalle</li>
+                            </ul>
+                            <div class="TabbedPanelsContentGroup">
+                                <div class="TabbedPanelsContent" style="overflow:auto;">
+                                    <div id="dWord"></div>
+                                    <div id="dRespuesta">
+                                        <div id="dcMensaje1"><textarea name="msgResp" rows="6" cols="28" id="msgResp" maxlength="140"></textarea></div>
+                                        <div id="dcMensaje2">0 de 140 caracteres</div>
+                                        <div id="dcMensaje3"><img id="btnEnviarPet" src="Images/enviar.png" alt="Envio de Respuesta" /></div>
+                                        <div id="dcMensaje4"><input type="checkbox" id="chkCerrar" /><span style="color:white; font-weight:bold;">Cerrar Caso</span>&nbsp;&nbsp;&nbsp;<img id="btnTerminarPet" src="Images/botonterminar.png" alt="Terminar" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dDescartarF">
+                    <div id="fbdesBusL" style="width:71%; float:left;">
+                        <div id="TabbedPanels2" class="TabbedPanels2">
+                      <ul class="TabbedPanelsTabGroup2">
+                        <li id="ftTodos" class="TabbedPanelsTab2" tabindex="0">Todos</li>
+                        <li id="ftAsi" class="TabbedPanelsTab2" tabindex="0">Asignados</li>
+                        <li id="ftxAsi" class="TabbedPanelsTab2" tabindex="0">Por asignar</li>
+                        <li id="ftDs" class="TabbedPanelsTab2" tabindex="0">Descartados</li>
+                      </ul>
+                      <div class="TabbedPanelsContentGroup2">
+                        <div id="Div5" class="TabbedPanelsContent2">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="fbtxtDesBus fbcero" role="fbcero" placeholder="Buscar" style="color:#405885" /></td>
+                                <td><img class="fbimgDesBus fbcero" role="fbcero" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="fbsDesBusfbcero" class="fbsDesBus" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="fdTodos" class="cTab"></div>
+                            <!--<div id="dfVer1" class="dVerM"><span id="verf1" class="cfVerM">Ver Más</span></div>-->
+                        </div>
+                        <div id="Div6" class="TabbedPanelsContent2">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="fbtxtDesBus fbuno" role="fbuno" placeholder="Buscar" style="color:#405885" /></td>
+                                <td><img class="fbimgDesBus fbuno" role="fbuno" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="fbsDesBusfbuno" class="fbsDesBus" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="fdAsi"></div>
+                            <!--<div id="dfVer2" class="dVerM"><span id="verf2" class="cfVerM">Ver Más</span></div>-->
+                        </div>
+                        <div id="Div7" class="TabbedPanelsContent2">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="fbtxtDesBus fbdos" role="fbdos" placeholder="Buscar" style="color:#405885" /></td>
+                                <td><img class="fbimgDesBus fbdos" role="fbdos" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="fbsDesBusfbdos" class="fbsDesBus" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="fdxAsi"></div>
+                            <!--<div id="dfVer3" class="dVerM"><span id="verf3" class="cfVerM">Ver Más</span></div>-->
+                        </div>
+                        <div id="Div8" class="TabbedPanelsContent2">
+                            <table>
+                              <tr>
+                                <td><span style="font-weight:bold; color:#fff;">Buscar: </span><input type="text" class="fbtxtDesBus fbtres" role="fbtres" placeholder="Buscar" style="color:#405885" /></td>
+                                <td><img class="fbimgDesBus fbtres" role="fbtres" src="Images/search36.png" alt="Buscar" style="cursor:pointer;"/></td>
+                                <td><span id="fbsDesBusfbtres" class="fbsDesBus" style="color:#fff;"></span></td>
+                              </tr>
+                            </table>
+                            <div id="fdDs"></div>
+                            <!--<div id="dfVer4" class="dVerM"><span id="verf4" class="cfVerM">Ver Más</span></div>-->
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div id="fbdesBusC" style="width:2%; float:left;"></div>
+                    <div id="fbdesBusR" style="width:25%; float:right;">
+                        <div id="Div9" class="TabbedPanels2">
+                            <ul class="TabbedPanelsTabGroup2">
+                                <li id="Li3" class="TabbedPanelsTab2" tabindex="0">Detalle</li>
+                            </ul>
+                            <div class="TabbedPanelsContentGroup2">
+                                <div class="TabbedPanelsContent2" style="overflow:auto;">
+                                    <div id="fbdWord"></div>
+                                    <div id="fbdRespuesta">
+                                        <div id="fbdcMensaje1"><textarea rows="12" cols="28" id="fbmsgResp" maxlength="4000"></textarea></div>
+                                        <div id="fbdcMensaje2">0 de 4000 caracteres</div>
+                                        <div id="fbdcMensaje3"><input type="checkbox" id="fbchkCerrar" /><span style="color:white; font-weight:bold;">Cerrar Caso</span><input type="button" id="fbEnviarPet" value="Enviar" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--9 Termina div que muestra la seccion de descartar-->
+            <!--10 Comienza div que muestra la seccion de ABC-->
+            <div id="dabc">
+                <div id="TabbedPanels3" class="TabbedPanels3">
+                    <ul class="TabbedPanelsTabGroup3">
+                        <li id="labc1" class="TabbedPanelsTab3" tabindex="0">Altas</li>
+                        <li id="labc2" class="TabbedPanelsTab3" tabindex="1">Cambios</li>
+                        <li id="labc3" class="TabbedPanelsTab3" tabindex="2">Genericos</li>
+                        <li id="labc4" class="TabbedPanelsTab3" tabindex="3">Escalados</li>
+                    </ul>
+                    <div class="TabbedPanelsContentGroup3">
+                        <div id="dabc1" class="TabbedPanelsContent3">
+                            <div id="A3">
+                                <span id="dModAlt">Modulo de Altas Para Nuevos Usuarios</span>
+                                <fieldset id="fAltas" class="fAlt">
+                                <div id="dMsgAlta"><span id="msgAlta" class="msgAlta"></span></div>
+                                <label class="etiquetas">Nombre: </label><input class="inputs" type="text" name="nombre" id="nombre" placeholder="Nombre" /><span id="a" class="validaAltas" ></span><br /><br />
+                                <label class="etiquetas">Apellidos: </label><input class="inputs" type="text" name="apellidos" id="apellidos" placeholder="Apellidos" /><span id="b" class="validaAltas" ></span><br /><br />
+                                <label class="etiquetas">Usuario: </label><input class="inputs" type="text" name="usuario" id="usuario" placeholder="Usuario" maxlength="10" /><span id="c" class="validaAltas" ></span><br /><br />
+                                <!--<label class="etiquetas">Password: </label><input class="inputs" type="text" name="password" id="password" placeholder="Password" /><span id="d" class="validaAltas" ></span><br /><br />-->
+                                <label class="etiquetas">Atenciones: </label><input class="inputsB" type="text" name="atenciones" id="atenciones" placeholder="Atenciones" maxlength="1" value="1" readonly="readonly" /><span id="e" class="validaAltas" ></span><br /><br />
+                                <label class="etiquetas">Horario: </label><input class="inputs" type="text" name="horas" id="horas" placeholder="Horas" maxlength="1" /><span id="f" class="validaAltas" ></span><br /><br />
+                                <!--<label class="etiquetas">Estatus: </label>
+                                            <select id="estatus" class="inputs">
+                                                <option value="">Elige Estatus</option>
+                                                <option value="A">Activo</option>
+                                                <option value="I">Inactivo</option>
+                                                <option value="B">Baja</option>
+                                                <option value="S">Suspendido</option>
+                                            </select><span id="h" class="validaAltas" ></span><br /><br />-->
+                                <label class="etiquetas">Perfil: </label>
+                                    <select id="perfil" class="inputs">
+                                        <!--<option value="" class="adm">Elige Perfil</option>
+                                        <option value="2" class="adm">Administrador</option>
+                                        <option value="3" class="adm">Supervisor</option>
+                                        <option value="4" class="adm sup cma">Operador</option>
+                                        <option value="5" class="adm">Community Manager</option>-->
+                                    </select><span id="g" class="validaAltas" ></span><br /><br />
+                                <label class="etiquetas">Correo: </label><input class="inputs" type="text" name="apellidos" id="mail" placeholder="Mail" /><span id="i" class="validaAltas" ></span><br /><br />
+                                <label class="etiquetas">Firma: </label><input class="inputs" type="text" name="firma" id="firma" placeholder="Firma" maxlength="2" /><span id="h" class="validaAltas" ></span><br /><br />
+                                <div id="dBoton"><input type="button" id="btnAltas" value="Generar Alta" /></div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div id="dabc2" class="TabbedPanelsContent3">
+                        <span id="dModCam">Modulo de Actualización de Personal</span>
+                            <div id="f3">
+                                <div id="f31">
+                                    <div id="abc1">
+                                    </div>
+                                </div>
+                                <div id="f32">
+                                    <div id="fBaja" class="fBaja">
+                                    <div id="dMsgBaja"><span id="msgBaja" class="msgBaja"></span></div>
+                                        <label class="etiquetas">Nombre: </label><input class="inputs" type="text" name="nombre" id="cnombre" placeholder="Nombre" /><span id="ca" class="validaBajas" ></span><br /><br />
+                                        <label class="etiquetas">Apellidos: </label><input class="inputs" type="text" name="apellidos" id="capellidos" placeholder="Apellidos" /><span id="cb" class="validaBajas" ></span><br /><br />
+                                        <label class="etiquetas">Usuario: </label><input class="inputs" type="text" name="usuario" id="cusuario" placeholder="Usuario" maxlength="10" /><span id="cc" class="validaBajas" ></span><br /><br />
+                                        <!--<label class="etiquetas">Password: </label><input class="inputsB" type="text" name="password" id="cpassword" placeholder="Password" /><span id="cd" class="validaBajas" ></span><br /><br />-->
+                                        <label class="etiquetas">Atenciones: </label><input class="inputsB" type="text" name="atenciones" id="catenciones" placeholder="Atenciones" maxlength="1" readonly="readonly" /><span id="ce" class="validaBajas" ></span><br /><br />
+                                        <label class="etiquetas">Horas: </label><input class="inputs" type="text" name="horas" id="choras" placeholder="Horas" maxlength="1" /><span id="cf" class="validaBajas" ></span><br /><br />
+                                        <label class="etiquetas">Estatus: </label>
+                                            <select id="cestatus" class="inputs">
+                                                <option value="">Elige Estatus</option>
+                                                <option value="A">Activo</option>
+                                                <option value="I">Inactivo</option>
+                                                <option value="B">Baja</option>
+                                                <option value="S">Suspendido</option>
+                                            </select><span id="ch" class="validaBajas" ></span><br /><br />
+                                        <label class="etiquetas">Perfil: </label>
+                                            <select id="cperfil" class="inputs">
+                                                <option value="">Elige Perfil</option>
+                                                <option value="1">Master</option>
+                                                <option value="2">Administrador</option>
+                                                <option value="3">Supervisor</option>
+                                                <option value="4">Operador</option>
+                                            </select><span id="cg" class="validaBajas" ></span><br /><br />
+                                            <label class="etiquetas">Correo: </label><input class="inputs" type="text" name="apellidos" id="cmail" placeholder="Mail" /><span id="ci" class="validaBajas" ></span><br /><br />
+                                            <label class="etiquetas">Firma: </label><input class="inputs" type="text" name="firma" id="cfirma" placeholder="Firma" maxlength="2" /><span id="cj" class="validaBajas" ></span><br /><br />
+                                        <div style="text-align:center;"><input type="button" id="btnBaja" value="Actualizar" class="btnBaja" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dabc3" class="TabbedPanelsContent3">
+                            <div id="dGen">
+                            <!--<div id="dGen2">
+                                    <table id="tablaGen">
+                                        <tr>
+                                            <td>Descripción:</td><td><input type="text" id="genDesc" placeholder="Descripción" class="inputsGen"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Estatus:</td><td><input type="radio" name="genEst" id="genEstA" value="Activo"/>Activo &nbsp;&nbsp;&nbsp;<input type="radio" name="genEst" id="genEstI" value="Inactivo"/>Inactivo</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="text-align:center"><span id="sValGen" style="color:Red; background-color:White; text-align:center;"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="width:100%; text-align:center;"><span style="width:33%;"><input type= "button" id="btnGenNu" value="Nuevo" class="botonGen"/></span><span style="width:33%;"><input type="button" id="btnGenEd" value="Editar" class="botonGen"/></span><span style="width:33%;"><input type="button" id="btnGenEl" value="Eliminar" class="botonGen"/></span></td>
+                                        </tr>
+                                    </table>
+                                </div> -->
+                                <div id="dGen1">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dabc4" class="TabbedPanelsContent3">
+                            <div id="dEsc">
+                                <div id="dEscL">
+                                    <div style="display:block; width:95%; margin:0 0 10px 25px; color:#094fa4;">
+                                        <span style="font-size:16px; font-weight:bold;">ALta de Estado de Gestión y Cuentas Asociadas</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span id="btnRegGestion" style="display:inline; border-radius:5px; padding:5px; background-color:#006ec1; color:White; cursor:pointer;">Regresar</span>
+                                    </div>
+                                    <div id="dEscL1">
+                                        <table id="tablaGen">
+                                            <tr>
+                                                <td>Descripción:</td><td><input type="text" id="escDesc" placeholder="Descripción" class="inputsEsc" style="width:250px;"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="width:100%; text-align:center;"><span id="valEscDesc"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="text-align:center;"><input type="button" id="btnEscNuevo" value="Dar de Alta" class="botonEsc" /></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="dEscL2">
+                                        <table style="padding:3px 10px 3px 10px; background-color:#006ec1;">
+                                            <tr>
+                                                <td>Usuario:</td>
+                                                <td><input type="text" id="escUsuario0" placeholder="Usuario" class="inputsEsc usuario"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Correo:</td>
+                                                <td><input type="text" id="escCorreo0" placeholder="Correo" class="inputsEsc correo"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="width:100%; text-align:center;"><span id="valEscNuevo0"></span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="dEscL3">
+                                        <input type="button" id="btnAgrCuenta" value="Agregar Cuenta" class="botonEsc" /><br />
+                                        <input type="button" id="btnEliCuenta" value="Eliminar cuenta" class="botonEsc" /><br />
+                                    </div>
+                                </div>
+                                <div id="dEscR">
+                                    <div id="dEscR1">
+                                    </div>
+                                    <div id="dEscR2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--10 Termina div que muestra la seccion de ABC-->
+
+            <!--11 Comienza código que genera el componente mail escalados-->
+            <div id="divMail">
+                <div id="dMailL">
+                    <div id="div_option">
+                        <span>Correos</span><br /><br />
+				        <button class="btn_state" id="btn_options" style="border-radius:5px;">
+					        <img alt="Opciones" src="Images/gear.png" width="19" height="19" />
+				        </button>
+			        </div>
+                    <div id="divMailBotones">
+			            <div style="display:inline-block; text-align:right; float:right; background-color:#fff; padding:6px 10px 0 10px; border-radius:5px; box-shadow:0px 0px 10px #999; min-height:30px;">
+                            <span style="background:#92C83C;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Resuelto <span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#DD4B39;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Vencido <span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#3A8CC7;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;En Tiempo <span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#ffd754;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Por Vencer <span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#CCC;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Sin Enviar <span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <button id="btn_all" class="btn_state btn_activate" value="0" >
+				                Todos
+			                </button>
+			                <button id="btn_resolved" class="btn_state" value="1">
+				                Resuelto
+			                </button>
+			                <button id="btn_inside" class="btn_state" value="2">
+				                En Tiempo
+			                </button>
+			                <button id="btn_over" class="btn_state" value="3">
+				                Por Vencer
+			                </button>
+			                <button id="btn_end" class="btn_state" value="4">
+				                Vencido
+			                </button>
+			                <button id="btn_notsend" class="btn_state" value="5">
+				                Sin enviar
+			                </button>
+                            <button id="btn_export" class="btn_state" value="x" onclick="window.open('exportFile.php');">
+                                Exportar Archivo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu_option" class="menu_div">
+		            <span style="color:#3A8CC7;font-size:13px;font-weight:bold;margin-left:5px;">Opciones</span>
+				    <p style="text-align:center;">
+                    <span>Ultimos</span><br />
+				    <input type="text" class="inputNumer" value="100" id="txt_limit" maxlength="3" /><br />
+				    <span>Escalados</span><br />
+                    </p>
+	            </div>
+                <div id="dMailR">
+
+                </div>
+            </div>
+            <!--11 Termina código que genera el componente mail escalados-->
+
+            <!--12 Comienza código que genera el componente publicar tuits-->
+            <div id="dTuitsPb">
+                <div id="dTuitsPbHead" style="text-align:center; display:block;">
+                    <div style="float:left; width:50%; height:100%; display:block;"><img alt="Ver Tuits" src="Images/tw256.png" style="cursor:pointer" id="pblTw" /></div>
+                    <div style="float:right; width:50%; height:100%; display:block;"><img alt="Ver Tuits" src="Images/fb256.png" style="cursor:pointer" id="pblFb" /></div>
+                </div>
+                <div id="dTuitsPbC1" style="width:96%; height:100%; display:none; padding:2%; background-color:#3EC8DF;">
+                    <div id="dTuitsPb1">
+                        <div style="display:block; background-color:#fff; padding:6px 10px 0 10px; border-radius:5px; box-shadow:0px 0px 10px #999; min-height:30px; margin-bottom:30px;">
+                            <img alt="ver Engine Twitter" src="Images/engine.png"; style="float:left; cursor:pointer;" id="engineShow" />
+                            <span style="background:#00567B;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Todos<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#BDF5FB;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Tw Enviados<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#BFEE99;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Tw Pendientes<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#FCFE83;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;DM's Enviados<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#E6E6E6;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;DM's Pendientes<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <button id="btnTw0" class="stateTw activateTw" value="0" >
+				                Todos
+			                </button>
+			                <button id="btnTw1" class="stateTw" value="1">
+				                Tw Enviados
+			                </button>
+			                <button id="btnTw2" class="stateTw" value="2">
+				                Tw Pendientes
+			                </button>
+			                <button id="btnTw3" class="stateTw" value="3">
+				                DM's Enviados
+			                </button>
+			                <button id="btnTw4" class="stateTw" value="4">
+				                DM's Pendientes
+			                </button>
+                            <img alt="ver facebook" src="Images/fb24.png"; style="float:right; cursor:pointer;" id="fbShow" />
+                        </div>
+                    </div>
+                    <div id="dTuitsPb2">
+                    </div>
+                </div>
+                <div id="dTuitsPbC2" style="width:96%; height:100%; display:none; padding:2%; background-color:#405885;">
+                    <div id="dTuitsPbFb1">
+                        <div style="display:block; background-color:#fff; padding:6px 10px 0 10px; border-radius:5px; box-shadow:0px 0px 10px #999; min-height:30px; margin-bottom:30px;">
+                            <span style="background:#00567B;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Todos<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#BDF5FB;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Post/Com Env<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#BFEE99;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Post/Com Pend<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#FCFE83;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Outbox Env<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <span style="background:#E6E6E6;border-radius:5px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Outbox Pend<span style="color:#CCC;">&nbsp;|&nbsp;</span>
+			                <button id="btnFb0" class="stateFb activateFb" value="0" >
+				                Todos
+			                </button>
+			                <button id="btnFb1" class="stateFb" value="1">
+				                Post/Com Env
+			                </button>
+			                <button id="btnFb2" class="stateFb" value="2">
+				                Post/Com Pend
+			                </button>
+			                <button id="btnFb3" class="stateFb" value="3">
+				                Outbox Env
+			                </button>
+			                <button id="btnFb4" class="stateFb" value="4">
+				                Outbox Pend
+			                </button>
+                            <img alt="ver twitter" src="Images/tw24.png"; style="float:right; cursor:pointer;" id="twShow" />
+                        </div>
+                    </div>
+                    <div id="dTuitsPbFb2">
+                    </div>
+                </div>
+            </div>
+            <!--12 Termina código que genera el componente publicar tuits-->
+
+            <!--13 Comienza código que genera el componente de casos abiertos y cerrados-->
+            <div id="dCerrar">
+                <div id="dCerrarHeader">
+                    Canal&nbsp;
+                    <select id="casoCanal">
+                        <option  value="" selected="selected">Selecciona</option>
+                        <option value="1">Twitter</option>
+                        <option value="2">Facebook</option>
+                    </select><br />
+                    Fecha Inicial&nbsp;<input type="text" id="fCierre1" class="btnFecha" />&nbsp;Fecha Final&nbsp;<input type="text" id="fCierre2" class="btnFecha" />
+                    <input type="button" id="btnFechas" value="C o n s u l t a r" /><br />
+                    <span id="valFechas"></span>
+                    <!--<img src="Images/btnlinkface.png" id="btnConsultaCasos" style="cursor:pointer;" width="20px" height="25px" />-->
+                </div>
+                <div id="dCerrarCuerpo"></div>
+            </div>
+            <!--13 Termina código que genera el componente de casos abiertos y cerrados-->
+
+        </div>
+        <!--6 Termina div que contiene el área de menu y cuerpo de grtd de la solución-->
+
+        <div id="blogTable" style="width:990px; margin:0px auto; display:none;padding:15px;">
+            <table style="width:100%;" id="tableBlogContent">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td style="width: 77px;">fecha</td>
+                        <td>Autor</td>
+                        <td>Titulo</td>
+                        <td>Mensaje</td>
+                        <td style="width: 77px;">Fecha revisión</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
+    <!--1 Termina contedor principal, contiene a todos los divs y elementos que conforman la solución-->
+
+    <!-- Comienza div para pie de página-->
+    <div id="dFooter">Supervisor Summer V4.0.2</div>
+    <!-- Termina div para pie de página-->
+
+    <!--x Comienza div que muestra el cuadro de configuración-->
+    <div id="divConf">
+        <table style="width:100%;">
+            <tr>
+                <td colspan="2" style="font-size:12px; text-align:center; background-color:#999; color:#fff; font-weight:bold; height:20px; border-radius:3px;">
+                    Configuración<img id="closeConf" src="Images/closeConf.png" title="Cerrar" alt="Cerrar" style="float:right; cursor:pointer;" />
+                </td>
+            </tr>
+            <tr><td style="height:10px;"></td></tr>
+            <tr>
+                <td class="tdConf">En Espera:</td>
+                <td><input type="text" id="txtespera" maxlength="5" class="clasetexto" value="" /><span id="stxtespera" class="vConf"></span></td>
+            </tr>
+            <tr>
+                <td class="tdConf">TME (seg):</td>
+                <td><input type="text" id="txttme" maxlength="5" class="clasetexto" value="" /><span id="stxttme" class="vConf"></span></td>
+            </tr>
+            <tr>
+                <td class="tdConf">TMO (seg):</td>
+                <td><input type="text" id="txttmo" maxlength="5" class="clasetexto" value="" /><span id="stxttmo" class="vConf"></span></td>
+            </tr>
+            <tr>
+                <td class="tdConf">Nivel de Servicio (%):</td>
+                <td><input type="text" id="txtns" maxlength="5" class="clasetexto" value="" /><span id="stxtns" class="vConf"></span></td>
+            </tr>
+            <tr>
+                <td class="tdConf">Umbral (seg):</td>
+                <td><input type="text" id="txtum" maxlength="5" class="clasetexto" value="" /><span id="stxtum" class="vConf"></span></td>
+            </tr>
+            <tr><td style="height:10px;"></td></tr>
+            <tr>
+                <td colspan="2" style="text-align:center; border-top:1px solid #999;">
+                    <input type="button" id="btnGuardarConf" value="Guardar" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--x Termina div que muestra el cuadro de configuración-->
+</body>
+</html>
