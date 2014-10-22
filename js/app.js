@@ -11,7 +11,8 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate']);
       //Dashboard
       .state('dashboard', {
           url: '/dashboard',
-          templateUrl: 'js/views/dashboard/index.html'
+          templateUrl: 'js/views/dashboard/index.html',
+          //controller: 'ResourcesCtrl'
       })
   });
 
@@ -26,7 +27,17 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate']);
 
   // All Resources
 
-  appGrtd.controller('fooCtrl', function($scope, $http){
-    //$scope.formsignup = {};
+  appGrtd.controller('ResourcesCtrl', function($scope, $http){
+
+    //$scope.foo = cocacola;
+    var foo = { op : 'grtd', cUmbral : '1800' };
+
     //$scope.processForm = function() {};
+    $http({
+      method: 'POST',
+      url: 'api/rest.php',
+      data: foo,
+      dataType: 'json',
+    });
+
   });
