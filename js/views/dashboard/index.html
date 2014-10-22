@@ -61,11 +61,11 @@
       <span class="text-button">No Disponibles</span>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
+      <span class="text-top">En Atención</span>
       <div  class="circle">
-        <div>{{status.EnAtencion}}</div>
+        <div>{{status.EnAtencion}} - {{status.EnAtencion}}</div>
       </div>
-      <span class="text-button">En Atención</span>
+      <span class="text-button"></span>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
       <span class="text-top"></span>
@@ -90,11 +90,13 @@
       <span class="text-button">Baño</span>
     </div>-->
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
+      <span class="text-top">Recibidas</span>
       <div  class="circle">
         <div>{{status.thRec}}</div>
       </div>
-      <span class="text-button">Recibidas</span>
+      <span class="text-button">
+        f:{{status.fbhRec}} - t:{{status.tfRec}} 
+      </span>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
       <span class="text-top"></span>

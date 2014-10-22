@@ -37,7 +37,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate']);
          data : $.param($scope.grid),
          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
       })
-      .success(function(data, status) {
+      .success(function(data, status){
 
           $scope.general = data;
           console.info("All Resources >>>", status);
