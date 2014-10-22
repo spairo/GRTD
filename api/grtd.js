@@ -698,6 +698,7 @@ function setInformation(obj) {
     $("#asReunion").html(obj[0].Reunion);
     $("#asBano").html(obj[0].Bano);
     $("#asAtencion").html(obj[0].En_Atencion);
+
     $("#thRecibidas").html(obj[0].Recibidas);
     $("#thAtendidas").html(obj[0].Atendidas);
     $("#thAtencion").html(obj[0].En_Atencion2);
@@ -706,6 +707,7 @@ function setInformation(obj) {
     $("#thTME").html(obj[0].TME);
     $("#thTMO").html(obj[0].TMO);
     $("#thNS").html(obj[0].NivelServicio);
+
     //$("#fdf").html(obj[0].Productividad);
     $("#tfRecibidas").html(obj[0].Recibidas_Fuera_Horario);
     $("#tfAtendidas").html(obj[0].Atendidas_Fuera_Horario);

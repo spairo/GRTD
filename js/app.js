@@ -42,6 +42,12 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate']);
           $scope.general = data;
           console.info("All Resources >>>", status);
 
+          //Logic
+          var tcase = data[0].tCasos;
+          var fcase = data[0].fbCasos;
+          $scope.TotalCases = tcase + fcase;
+          //console.log("total cases", $scope.TotalCases);
+
       })
       .error(function(data, status){
           console.error("All Resources >>>", status, "Oops!");
