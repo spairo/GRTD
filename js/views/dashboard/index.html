@@ -38,27 +38,77 @@
 
 <div class="container" ng-controller="ResourcesCtrl">
   <h1>Dashboard</h1>
-  <div class="dashboard row" ng-repeat="status in items">
+  <div class="dashboard row" ng-repeat="status in general">
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top">Firmados</span>
+      <span class="text-top"></span>
       <div  class="circle">
         <div>{{status.Firmados}}</div>
       </div>
       <span class="text-button">Firmados</span>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top">Disponibles</span>
+      <span class="text-top"></span>
       <div  class="circle">
         <div>{{status.Disponibles}}</div>
       </div>
       <span class="text-button">Firmados</span>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top">No Disponibles</span>
+      <span class="text-top"></span>
       <div  class="circle">
         <div>{{status.NoDisponibles}}</div>
       </div>
       <span class="text-button">No Disponibles</span>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
+      <span class="text-top"></span>
+      <div  class="circle">
+        <div>{{status.EnAtencion}}</div>
+      </div>
+      <span class="text-button">En Atención</span>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
+      <span class="text-top"></span>
+      <div  class="circle">
+        <div>{{status.Reunion}}</div>
+      </div>
+      <span class="text-button">Reunión</span>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
+      <span class="text-top"></span>
+      <div  class="circle">
+        <div>{{status.Descanso}}</div>
+      </div>
+      <span class="text-button">Descanso</span>
+    </div>
+    <!--
+    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
+      <span class="text-top"></span>
+      <div  class="circle">
+        <div>{{status.Bano}}</div>
+      </div>
+      <span class="text-button">Baño</span>
+    </div>-->
+    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
+      <span class="text-top"></span>
+      <div  class="circle">
+        <div>{{status.NivelServicio}}</div>
+      </div>
+      <span class="text-button">Nivel Servicio %</span>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
+      <span class="text-top"></span>
+      <div  class="circle">
+        <div>{{status.Casos}}</div>
+      </div>
+      <span class="text-button">Casos</span>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
+      <span class="text-top"></span>
+      <div  class="circle">
+        <div>{{status.Descanso}}</div>
+      </div>
+      <span class="text-button">Descanso</span>
     </div>
   </div>
 </div>
