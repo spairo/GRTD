@@ -48,6 +48,7 @@ h1 small{
 	font-family: 'Bebas', sans-serif;
 	margin-top: 40px;
 	letter-spacing: 2px;
+  display: block;
 }
 
 /* Header */

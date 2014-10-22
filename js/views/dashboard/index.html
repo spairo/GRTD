@@ -3,7 +3,7 @@
   <h1>GRTD <small>summer</small></h1>
 
   <div class="block_header">
-    <table class="table table-striped" ng-controller="ResourcesCtrl">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th></th>
@@ -34,34 +34,31 @@
       </tbody>
     </table>
   </div>
+</div>
 
+<div class="container" ng-controller="ResourcesCtrl">
   <h1>Dashboard</h1>
-
-  <div class="dashboard row">
+  <div class="dashboard row" ng-repeat="status in items">
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top">Sit amet noe</span>
+      <span class="text-top">Firmados</span>
       <div  class="circle">
-        <div>90</div>
+        <div>{{status.Firmados}}</div>
       </div>
-      <span class="text-button">Lorem Ipsum</span>
+      <span class="text-button">Firmados</span>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top">Sit amet noe</span>
+      <span class="text-top">Disponibles</span>
       <div  class="circle">
-        <div>90</div>
+        <div>{{status.Disponibles}}</div>
       </div>
-      <span class="text-button">Lorem Ipsum</span>
+      <span class="text-button">Firmados</span>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top">Sit amet noe</span>
+      <span class="text-top">No Disponibles</span>
       <div  class="circle">
-        <div>90</div>
+        <div>{{status.NoDisponibles}}</div>
       </div>
-      <span class="text-button">Lorem Ipsum</span>
+      <span class="text-button">No Disponibles</span>
     </div>
   </div>
-  <!--
-  <h1>dForma</h1>
-  <div id="dForma"></div>
-  -->
 </div>
