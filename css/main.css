@@ -3,8 +3,8 @@
 html,
 body {
   background: #FCFCFE;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
+  font-family: 'AvenirPro', sans-serif;
+  font-weight: normal;
 }
 
 * {
@@ -27,19 +27,40 @@ body {
 	font-style: normal;
 }
 
+@font-face {
+    font-family: "AvenirPro";
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/28963C_0_0.eot?#iefix') format("embedded-opentype"), url('../fonts/28963C_0_0.woff') format("woff"), url('../fonts/28963C_0_0.ttf') format("truetype");
+}
+@font-face {
+    font-family: "AvenirPro";
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/28963C_1_0.eot?#iefix') format("embedded-opentype"), url('../fonts/28963C_1_0.woff') format("woff"), url('../fonts/28963C_1_0.ttf') format("truetype");
+}
+
+28963C_0_0.ttf
+
+
 /* Headings */
 
 h1, h2, h3, h4, h5{
-	font-family: "Bebas", sans-serif;
+	font-family: "AvenirPro", sans-serif;
   color: #D0D2D5;
-  font-weight: normal;
   text-transform: uppercase;
 }
-h1 small{
-	font-family: "Bebas", sans-serif;
-	text-transform: uppercase;
-  color: #C3C4C9;
-}
+  h1{
+    font-family: "AvenirPro", sans-serif;
+    text-transform: normal;
+    font-weight: bold;
+    color: #C3C4C9;
+  }
+  h1 small{
+  	font-family: "AvenirPro", sans-serif;
+  	text-transform: normal;
+    color: #C3C4C9;
+  }
 
 /* General */
 
@@ -54,28 +75,30 @@ h1 small{
 /* Header */
 
 .header{
-	border-bottom: 4px #ED7A5A solid;
+  background: #34495E;
+	border-bottom: 4px #e67e22 solid;
 }
   .header .navbar-brand{
-    color: #545B64;
+    color: #fff;
   }
   .header a{
-    font-family: "Bebas", sans-serif;
+    font-family: "AvenirPro", sans-serif;
     font-size: 21px;
-    color: #545B64;
+    font-weight: normal;
+    color: #fff;
   }
   .header a:hover{
-    font-family: "Bebas", sans-serif;
+    font-family: "AvenirPro", sans-serif;
     font-size: 21px;
-    color: #545B64;
+    color: #f5f5f5;
   }
 
 /* Block  Header */
 
 .block_header{
-	border-top: 2px #C9CDD8 solid;
-	border-left: 4px #ED7A5A solid;
-	border-bottom: 2px #C9CDD8 dashed;
+	border-top: 2px #bdc3c7 solid;
+	border-left: 6px #e67e22 solid;
+	border-bottom: 2px #bdc3c7 dashed;
 	background-color: #F3F4F8;
 	width: 100%;
 	min-height: 80px;
@@ -83,31 +106,58 @@ h1 small{
 	padding: 10px 5px 10px 5px;
 }
 	.block_header .btn-custom{
-		border: 1px #E66044 solid;
-		background: #ED7A5A;
+		border: 1px #d35400 solid;
+		background: #e67e22;
 		color: #fff;
-		font-family: 'Bebas', sans-serif;
-		letter-spacing: 1px;
+		font-family: 'AvenirPro', sans-serif;
+    font-weight: bold;
+    padding: 10px 5px;
 	}
 		.btn-custom:hover{
 			color: #fff;
 		}
+  .block_header .flat-button {
+    position: relative;
+    vertical-align: top;
+    width: 120px;
+    height: 45px;
+    padding: 0;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #f39c12;
+    border: 0;
+    border-bottom: 2px solid #e8930c;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #e8930c;
+    box-shadow: inset 0 -2px #e8930c;
+  }
+  .block_header .flat-button:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 	.block_header th{
-		font-family: 'Bebas', sans-serif;
-    font-size: 21px;
-    font-weight: lighter;
-		letter-spacing: 2px;
+		font-family: 'AvenirPro', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 		color: #555964;
 
 	}
 	.block_header td{
-		font-family: 'Bebas', sans-serif;
+		font-family: 'AvenirPro', sans-serif;
 		color: #9DA9B9;
 		letter-spacing: 2px;
 	}
 
 /* Dashboard */
 
+/*
+http://www.taringa.net/posts/hazlo-tu-mismo/15652232/Circulos-con-Efectos-Hover-Transiciones-CSS.html
+http://reinspirit.com/como-crear-circulos-de-colores-con-numeros-utilizando-html-y-css-en-wordpress/
+*/
 .dashboard{
 	background: #f5f6fa;
 	margin: 10px 0 10px 0;
@@ -116,6 +166,19 @@ h1 small{
   border-bottom: 2px #C9CDD8 dashed;
   border-left: 4px #ED7A5A solid;
 }
+  .dashboard .red {
+    background: red;
+     border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 15px;
+    text-align: center;
+    width: 1.6em;
+  }
 	.dashboard .circle{
     width: 50%;
     display: block;
