@@ -91,17 +91,9 @@ function ajaxResponseInfo() {
         success: function (msg) {
 
             console.info(msg);
-
             var obj = new Object();
-
             obj = eval(msg.d);
 
-            if (type == 1) {
-                setInformation(obj);
-            }
-            if (type == 2) {
-                setAgentesEstado(obj);
-            }
         },
         error: function (msg) {
             $("#divLoad").remove();
@@ -109,5 +101,31 @@ function ajaxResponseInfo() {
             console.error("Existe un problema con la busqueda.");
         }
     });
-//});
 }
+
+//function ajaxResponseInfo() {
+
+$(document).ready(function(){
+
+    $.ajax({
+        type: 'POST',
+        url: 'api/rest.php',
+        data : { op : 'getAgentesEstado'},
+        dataType: 'json',
+        success: function (msg) {
+
+            console.info(msg);
+            var obj = new Object();
+            obj = eval(msg.d);
+
+            console.error("get agentes");
+
+        },
+        error: function (msg) {
+
+            console.error("No Existe");
+
+        }
+    });
+//}
+});
