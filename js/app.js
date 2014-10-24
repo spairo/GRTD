@@ -99,16 +99,33 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Login Controller
 
+  appGrtd.controller('LoginCtrl', function($scope, $http) {
 
+    $scope.Login = function() {
 
+      $scope.login{};
 
+      console.log($scope.login);
 
+      $scope.data = { op : 'validateLogin', accion : '1', cLogin : $scope.cLogin, cPass : $scope.cPass};
 
+      $http({
+         method : 'POST',
+         url : 'api/rest.php',
+         data : $.param($scope.data),
+         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+      })
+      .success(function(data, status){
+          //$scope.users = data;
+          console.info(data);
+      })
+      .error(function(data, status){
+          console.error("Login >>>", data + status, "Oops!");
+      })
 
+    };
 
-
-
-
+  });
 
   // Clock Live Controller
 

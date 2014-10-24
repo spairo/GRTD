@@ -21,7 +21,7 @@
 
 		case 'validateLogin':
 			$res = $ws->getAgentesEstado();
-			echo $res->getAgentesEstadoResult;
+			echo $res->validateLoginResponse;
 		break;
 
 
