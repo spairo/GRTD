@@ -26,6 +26,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
          url : 'api/rest.php',
          data : $.param($scope.grid),
          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+         timeout: 1
       })
       .success(function(data, status){
 
@@ -54,13 +55,17 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
          method : 'POST',
          url : 'api/rest.php',
          data : $.param($scope.data),
+         {timeout: 5000},
          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+      })
+      .config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.timeout = 5000;
       })
       .success(function(data, status){
 
           $scope.users = data;
           console.info("All Users >>>", status);
-          
+                
       })
       .error(function(data, status){
           console.error("All Users >>>", status, "Oops!");
