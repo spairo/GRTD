@@ -4,7 +4,7 @@
 
 	$ws = new SoapClient('http://172.18.53.180/summerhouston/supervisor/webservice1.asmx?WSDL');
 
-	$opcion = $_POST['op'];
+	$opcion = (isset($_POST['op'])) ? $_POST['op'] : $_GET['op'];
 
 	switch ($opcion) {
 
@@ -12,6 +12,11 @@
 			$a = array('cUmbral' => $_POST['cUmbral']);
 			$res = $ws->grtd ($a);
 			echo $res->grtdResult ;
+		break;
+
+		case 'getAgentesEstado':
+			$res = $ws->getAgentesEstado();
+			echo $res->getAgentesEstadoResult;
 		break;
 
 		case 'grtdArea':

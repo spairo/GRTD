@@ -1,9 +1,7 @@
-<div class="container">
-
+<div class="container" ng-controller="UsersCtrl">
   <h1>GRTD <small>summer</small></h1>
-
   <div class="block_header">
-    <table class="table table-striped">
+    <table class="table table-striped" ng-repeat="user in users">
       <thead>
         <tr>
           <th></th>
@@ -16,23 +14,9 @@
       <tbody>
         <tr>
           <td></td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>1:55:00</td>
-          <td><button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>1:55:00</td>
-          <td><button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>1:55:00</td>
+          <td>{{user.cLogin_Nombre}} {{cLogin_Apellidos}}</td>
+          <td>Disponible</td>
+          <td>{{user.Tiempo}}</td>
           <td><button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button></td>
         </tr>
       </tbody>

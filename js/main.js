@@ -112,19 +112,14 @@ $(document).ready(function(){
         url: 'api/rest.php',
         data : { op : 'getAgentesEstado'},
         dataType: 'json',
-        success: function (msg) {
-
-            console.info(msg);
-            var obj = new Object();
-            obj = eval(msg.d);
-
-            console.error("get agentes");
-
+        success: function (data) {
+            console.info(data);
+            for (var i = data.length - 1; i >= 0; i--) {
+                data[i]
+            };
         },
-        error: function (msg) {
-
+        error: function (data) {
             console.error("No Existe");
-
         }
     });
 //}

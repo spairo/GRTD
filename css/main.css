@@ -14,8 +14,6 @@ body {
 
 /* Fonts */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,700);
-
 @font-face {
 	font-family:'Bebas';
 	src: url('../fonts/BebasNeue.otf');
@@ -39,9 +37,6 @@ body {
     font-weight: bold;
     src: url('../fonts/28963C_1_0.eot?#iefix') format("embedded-opentype"), url('../fonts/28963C_1_0.woff') format("woff"), url('../fonts/28963C_1_0.ttf') format("truetype");
 }
-
-28963C_0_0.ttf
-
 
 /* Headings */
 
@@ -158,6 +153,7 @@ h1, h2, h3, h4, h5{
 http://www.taringa.net/posts/hazlo-tu-mismo/15652232/Circulos-con-Efectos-Hover-Transiciones-CSS.html
 http://reinspirit.com/como-crear-circulos-de-colores-con-numeros-utilizando-html-y-css-en-wordpress/
 */
+
 .dashboard{
 	background: #f5f6fa;
 	margin: 10px 0 10px 0;
@@ -166,19 +162,6 @@ http://reinspirit.com/como-crear-circulos-de-colores-con-numeros-utilizando-html
   border-bottom: 2px #C9CDD8 dashed;
   border-left: 4px #ED7A5A solid;
 }
-  .dashboard .red {
-    background: red;
-     border-radius: 0.8em;
-    -moz-border-radius: 0.8em;
-    -webkit-border-radius: 0.8em;
-    color: #ffffff;
-    display: inline-block;
-    font-weight: bold;
-    line-height: 1.6em;
-    margin-right: 15px;
-    text-align: center;
-    width: 1.6em;
-  }
 	.dashboard .circle{
     width: 50%;
     display: block;
@@ -189,11 +172,12 @@ http://reinspirit.com/como-crear-circulos-de-colores-con-numeros-utilizando-html
     	display: block;
     	width: 100%;
     	height:0;
+      background: #446CB3;
     	padding-bottom: 100%;
     	-moz-border-radius: 50%;
     	-webkit-border-radius: 50%;
     	border-radius: 50%;
-    	border: 10px #4F9ADA solid;
+    	/*border: 10px #4F9ADA solid;*/
 	}
 	.dashboard .circle div {
     	float:left;
@@ -201,9 +185,9 @@ http://reinspirit.com/como-crear-circulos-de-colores-con-numeros-utilizando-html
     	padding-top:50%;
     	line-height:1em;
     	margin-top:-0.5em;
-    	font-family: 'Bebas', sans-serif;
-    	color: #515560;
-    	font-size: 32px;
+    	font-family: 'AvenirPro', sans-serif;
+    	color: #fff;
+    	font-size: 42px;
     	font-weight: bolder;
     	text-align:center;
 	}
@@ -223,8 +207,32 @@ http://reinspirit.com/como-crear-circulos-de-colores-con-numeros-utilizando-html
     .modal .modal-header{
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
-      background: #EF7955;
+      background: #e67e22;
     }
     .modal .modal-title{
       color: #fff;
+    }
+    .modal .flat-button{
+      position: relative;
+      vertical-align: top;
+      width: 100%;
+      height: 45px;
+      padding: 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      background: #f39c12;
+      border: 0;
+      border-bottom: 2px solid #e8930c;
+      cursor: pointer;
+      -webkit-box-shadow: inset 0 -2px #e8930c;
+      box-shadow: inset 0 -2px #e8930c;
+    }
+    .modal .flat-button:active{
+      top: 1px;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
     }

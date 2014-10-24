@@ -1,6 +1,6 @@
 'use strict';
 
-var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate']);
+var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap']);
 
   appGrtd.config(function($stateProvider, $urlRouterProvider){
 
@@ -12,20 +12,10 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate']);
       .state('dashboard', {
           url: '/dashboard',
           templateUrl: 'js/views/dashboard/index.html',
-          //controller: 'ResourcesCtrl'
       })
   });
 
-  //Form Login
-
-  appGrtd.controller('loginCtrl', function($scope, $http){
-      $scope.openLogin = function() {
-        alert("foo");
-        console.log("foo");
-      };
-  });
-
-  // All Resources
+  // Dashboard Controller
 
   appGrtd.controller('ResourcesCtrl', function($scope, $http){
 
@@ -53,3 +43,52 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate']);
           console.error("All Resources >>>", status, "Oops!");
       })
   });
+
+  // Users Controller
+
+  appGrtd.controller('UsersCtrl', function($scope, $http){
+
+      $scope.data = { op : 'getAgentesEstado'};
+
+      $http({
+         method : 'POST',
+         url : 'api/rest.php',
+         data : $.param($scope.data),
+         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+      })
+      .success(function(data, status){
+
+          $scope.users = data;
+          console.info("All Users >>>", status);
+          
+      })
+      .error(function(data, status){
+          console.error("All Users >>>", status, "Oops!");
+      })
+  });
+
+  // Login Modal
+
+  var ModalLoginCtrl = function ($scope, $modal) {
+
+      $scope.openlogin = function (size) {
+
+          var modalInstance = $modal.open({
+            templateUrl: 'myModalLogin.html',
+            controller: ModalInstanceCtrl,
+            size: size,
+            backdrop: 'static',
+            resolve: {
+
+            }
+          });
+      };
+  };
+
+  var ModalInstanceCtrl = function ($scope, $modalInstance) {
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+  };
+
+  
