@@ -1,7 +1,7 @@
 <div class="container" ng-controller="UsersCtrl">
   <h1>GRTD <small>summer</small></h1>
   <div class="block_header">
-    <table class="table table-striped" ng-repeat="user in users">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th></th>
@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr ng-repeat="user in users">
           <td></td>
           <td>{{user.cLogin_Nombre}} {{cLogin_Apellidos}}</td>
           <td>Disponible</td>
