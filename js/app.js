@@ -17,37 +17,40 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Dashboard Controller
 
-  appGrtd.controller('ResourcesCtrl', function($scope, $http){
+  appGrtd.controller('DashCtrl', function($scope, $http, $interval){
+    $interval(function(){
 
-      $scope.grid = { op : 'grtd', cUmbral : '1800'};
+        $scope.grid = { op : 'grtd', cUmbral : '1800'};
 
-      $http({
-         method : 'POST',
-         url : 'api/rest.php',
-         data : $.param($scope.grid),
-         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-         timeout: 1
-      })
-      .success(function(data, status){
+        $http({
+           method : 'POST',
+           url : 'api/rest.php',
+           data : $.param($scope.grid),
+           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(data, status){
 
-          $scope.general = data;
-          console.info("All Resources >>>", status);
+            $scope.general = data;
+            console.info("All Dash Resources >>>", status);
 
-          //Logic
-          var tcase = data[0].tCasos;
-          var fcase = data[0].fbCasos;
-          $scope.TotalCases = tcase + fcase;
-          //console.log("total cases", $scope.TotalCases);
+            //Logic
+            var tcase = data[0].tCasos;
+            var fcase = data[0].fbCasos;
+            $scope.TotalCases = tcase + fcase;
+            //console.log("total cases", $scope.TotalCases);
 
-      })
-      .error(function(data, status){
-          console.error("All Resources >>>", status, "Oops!");
-      })
+        })
+        .error(function(data, status){
+            console.error("All DashCtrl Resources >>>", status, "Oops!");
+        })
+    },30000)
   });
 
   // Users Controller
 
-  appGrtd.controller('UsersCtrl', function($scope, $http){
+  appGrtd.controller('UsersCtrl', function($scope, $http, $interval){
+
+    $interval(function(){
 
       $scope.data = { op : 'getAgentesEstado'};
 
@@ -55,21 +58,19 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
          method : 'POST',
          url : 'api/rest.php',
          data : $.param($scope.data),
-         {timeout: 5000},
          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-      })
-      .config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.timeout = 5000;
       })
       .success(function(data, status){
 
           $scope.users = data;
           console.info("All Users >>>", status);
-                
+
       })
       .error(function(data, status){
           console.error("All Users >>>", status, "Oops!");
       })
+
+    },30000)
   });
 
   // Login Modal
@@ -77,7 +78,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
   var ModalLoginCtrl = function ($scope, $modal) {
 
       $scope.openlogin = function (size) {
-
+        
           var modalInstance = $modal.open({
             templateUrl: 'myModalLogin.html',
             controller: ModalInstanceCtrl,
@@ -96,4 +97,23 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
     };
   };
 
-  
+  // Login Controller
+
+
+
+
+
+
+
+
+
+
+
+
+  // Clock Live Controller
+
+  appGrtd.controller('TimeCtrl', function($scope, $interval){
+    $interval(function(){
+      $scope.time = Date.now();
+    },0)
+  });

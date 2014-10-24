@@ -5,9 +5,9 @@
       <thead>
         <tr>
           <th></th>
-          <th>Asesor</th>
-          <th>Actividad</th>
-          <th>Tiempo</th>
+          <th><span class="glyphicon glyphicon-user"></span> Asesor</th>
+          <th><span class="glyphicon glyphicon-random"></span> Actividad</th>
+          <th><span class="glyphicon glyphicon-time"></span> Tiempo</th>
           <th></th>
         </tr>
       </thead>
@@ -17,13 +17,13 @@
           <td>{{user.cLogin_Nombre}} {{user.cLogin_Apellidos}}</td>
           <td>
             <div ng-if="user.nActividad_ID == '1'">Login</div>
-            <div ng-if="user.nActividad_ID == '2'">Logout</div>  
-            <div ng-if="user.nActividad_ID == '3'">Ready</div>  
-            <div ng-if="user.nActividad_ID == '4'">Not Ready</div>  
-            <div ng-if="user.nActividad_ID == '5'">Luch</div>  
-            <div ng-if="user.nActividad_ID == '6'">BathRoom</div>  
-            <div ng-if="user.nActividad_ID == '7'">Meeting</div>    
-            <div ng-if="user.nActividad_ID == '8'">In Attention</div>   
+            <div ng-if="user.nActividad_ID == '2'">Logout</div>
+            <div ng-if="user.nActividad_ID == '3'">Ready</div>
+            <div ng-if="user.nActividad_ID == '4'">Not Ready</div>
+            <div ng-if="user.nActividad_ID == '5'">Luch</div>
+            <div ng-if="user.nActividad_ID == '6'">BathRoom</div>
+            <div ng-if="user.nActividad_ID == '7'">Meeting</div>
+            <div ng-if="user.nActividad_ID == '8'">In Attention</div>
           </td>
           <td>{{user.Tiempo}}</td>
           <td><button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button></td>
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="container" ng-controller="ResourcesCtrl">
+<div class="container" ng-controller="DashCtrl">
   <h1>Dashboard</h1>
   <div class="dashboard row" ng-repeat="status in general">
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">

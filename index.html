@@ -37,7 +37,6 @@
 						<ul class="nav navbar-nav">
 							<li class=""><a href="#"></a></li>
 							<li><a href="#about"></a></li>
-							<li><a href="#">Date</a></li>
 						</ul>
 						<!-- Modals -->
 							<div ng-controller="ModalLoginCtrl">
@@ -58,11 +57,12 @@
 										    	<input type="password" class="form-control" placeholder="Password">
 											</div>
 										</form>
-										<button class="flat-button" ng-click="ok()">Ingresar</button>
+										<button class="btn btn-default btn-block" ng-click="ok()">Ingresar</button>
 							        </div>
 							    </script>
 							    <ul class="nav navbar-nav navbar-right">
-  									<li><a href="#" ng-click="openlogin('sm')">Login</a></li>
+										<li><a href="#"><div class="clock" ng-controller='TimeCtrl'>{{time | date:'medium'}}</div></a></li>
+  									<li><a href="#" ng-click="openlogin('sm')"><span class="login">Login</span></a></li>
   								</ul>
 							</div>
 						<!-- /#Modals -->

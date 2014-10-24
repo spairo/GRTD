@@ -19,6 +19,12 @@
 			echo $res->getAgentesEstadoResult;
 		break;
 
+		case 'validateLogin':
+			$res = $ws->getAgentesEstado();
+			echo $res->getAgentesEstadoResult;
+		break;
+
+
 		case 'grtdArea':
 			$a = array('cUmbral' => $_POST['cUmbral'],
 			'skill' => $_POST['skill']);
