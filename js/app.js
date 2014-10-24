@@ -78,7 +78,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
   var ModalLoginCtrl = function ($scope, $modal) {
 
       $scope.openlogin = function (size) {
-        
+
           var modalInstance = $modal.open({
             templateUrl: 'myModalLogin.html',
             controller: ModalInstanceCtrl,
