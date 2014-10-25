@@ -101,13 +101,11 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   appGrtd.controller('LoginCtrl', function($scope, $http) {
 
+    $scope.login = {};
+
     $scope.Login = function() {
 
-      $scope.login{};
-
-      console.log($scope.login);
-
-      $scope.data = { op : 'validateLogin', accion : '1', cLogin : $scope.cLogin, cPass : $scope.cPass};
+      $scope.data = { op : 'validateLogin', accion : '1'};
 
       $http({
          method : 'POST',
