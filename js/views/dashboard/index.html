@@ -1,56 +1,87 @@
-<div class="container" ng-controller="UsersCtrl">
+<div class="container" ng-controller="TabsCtrl">
   <h1 class="pull-left">GRTD <small>summer</small></h1>
+
   <div class="pull-right btn-group btn-group-lg">
-    <button type="button" ng-click="lions = !lions" ng-class="{ active: lions }" class="btn btn-grtd"><span class="glyphicon glyphicon-dashboard"></span></button>
-    <button type="button" ng-click="lions = !lions" ng-class="{ active: lions }" class="btn btn-grtd"><span class="glyphicon glyphicon-user"></span></button>
-    <button type="button" ng-click="lions = !lions" ng-class="{ active: lions }" class="btn btn-settings"><span class="glyphicon glyphicon-cog"></span></button>
+    <button type="button" ng-click="users = !users" ng-class="{ active: users }" class="btn btn-grtd"><span class="glyphicon glyphicon-user"></span></button>
+    <button type="button" ng-click="setting = !setting" ng-class="{ active: setting }" class="btn btn-grtd"><span class="glyphicon glyphicon-cog"></span></button>
   </div>
-
-  <div class="well" ng-show="lions">soy Leon</div>
-  <div class="well" ng-show="lions">soy 10</div>
-  <div class="well" ng-show="lions">soy pagaro</div>
-
-  <div class="block_header">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th><span class="glyphicon glyphicon-user"></span> Asesor</th>
-          <th><span class="glyphicon glyphicon-random"></span> Actividad</th>
-          <th><span class="glyphicon glyphicon-time"></span> Tiempo</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="user in users" class="repeat-animation">
-          <td></td>
-          <td>{{user.cLogin_Nombre}} {{user.cLogin_Apellidos}}</td>
-          <td>
-            <div ng-if="user.nActividad_ID == '1'">Login</div>
-            <div ng-if="user.nActividad_ID == '2'">Logout</div>
-            <div ng-if="user.nActividad_ID == '3'">Ready</div>
-            <div ng-if="user.nActividad_ID == '4'">Not Ready</div>
-            <div ng-if="user.nActividad_ID == '5'">Luch</div>
-            <div ng-if="user.nActividad_ID == '6'">BathRoom</div>
-            <div ng-if="user.nActividad_ID == '7'">Meeting</div>
-            <div ng-if="user.nActividad_ID == '8'">In Attention</div>
-          </td>
-          <td>{{user.Tiempo}}</td>
-          <td><button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="spinner-64" ng-show="loading"></div>
+  <div class="row settings" ng-show="setting">
+    <h1><span class="glyphicon glyphicon-cog"></span> Settings</h1>
+  </div>
+  <div ng-show="users">
+    <div class="row block_header" ng-controller="UsersCtrl">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th><span class="glyphicon glyphicon-user"></span> Asesor</th>
+            <th><span class="glyphicon glyphicon-random"></span> Actividad</th>
+            <th><span class="glyphicon glyphicon-time"></span> Tiempo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users" class="repeat-animation">
+            <td></td>
+            <td>{{user.cLogin_Nombre}} {{user.cLogin_Apellidos}}</td>
+            <td>
+              <div ng-if="user.nActividad_ID == '1'">Login</div>
+              <div ng-if="user.nActividad_ID == '2'">Logout</div>
+              <div ng-if="user.nActividad_ID == '3'">Ready</div>
+              <div ng-if="user.nActividad_ID == '4'">Not Ready</div>
+              <div ng-if="user.nActividad_ID == '5'">Luch</div>
+              <div ng-if="user.nActividad_ID == '6'">BathRoom</div>
+              <div ng-if="user.nActividad_ID == '7'">Meeting</div>
+              <div ng-if="user.nActividad_ID == '8'">In Attention</div>
+            </td>
+            <td>{{user.Tiempo}}</td>
+            <td><button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="spinner-64" ng-show="loading"></div>
+    </div>
   </div>
 </div>
 
 <div class="container" ng-controller="DashCtrl">
-  <h1>Dashboard</h1>
+  <h1 class="text-center">Dashboard <span class="glyphicon glyphicon-dashboard"></h1>
+  <div class="row dashboard">
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">foo</span>
+      <div  class="circle">
+        <span class="param">14</span>
+      </div>
+      <span class="text-button">Firmados</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">foo</span>
+      <div class="circle">
+        <span class="param">14</span>
+      </div>
+      <span class="text-button">Firmados</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">foo</span>
+      <div  class="circle">
+        <span class="param">14</span>
+      </div>
+      <span class="text-button">Firmados</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">foo</span>
+      <div  class="circle">
+        <span class="param">14</span>
+      </div>
+      <span class="text-button">Firmados</span>
+    </div>
+  </div>
+  <!--
   <div class="dashboard row" ng-repeat="status in general">
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
       <span class="text-top"></span>
       <div  class="circle">
-        <div>{{status.Firmados}}</div>
+        <span class="param">{{status.Firmados}}</span>
       </div>
       <span class="text-button">Firmados</span>
     </div>
@@ -88,7 +119,7 @@
         <div>{{status.Descanso}}</div>
       </div>
       <span class="text-button">Descanso</span>
-    </div>
+    </div>-->
     <!--
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
       <span class="text-top"></span>
@@ -97,6 +128,7 @@
       </div>
       <span class="text-button">Baño</span>
     </div>-->
+    <!--
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
       <span class="text-top">Recibidas</span>
       <div  class="circle">
@@ -165,5 +197,5 @@
       </div>
       <span class="text-button">Nivel Servicio %</span>
     </div>
-  </div>
+  </div>-->
 </div>

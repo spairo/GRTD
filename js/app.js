@@ -140,11 +140,10 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Custom Group Button
 
-  appGrtd.controller('mainController', function($scope) {
+  appGrtd.controller('TabsCtrl', function($scope) {
 
-    // set the default states
-
-    $scope.lions = false;
+    $scope.users = false;
     $scope.cranes = false;
+    $scope.bird = false;
 
   });
