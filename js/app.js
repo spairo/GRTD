@@ -43,12 +43,14 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
         .error(function(data, status){
             console.error("All DashCtrl Resources >>>", status, "Oops!");
         })
-    },30000)
+    },5000)
   });
 
   // Users Controller
 
   appGrtd.controller('UsersCtrl', function($scope, $http, $interval){
+
+    $scope.loading = true;
 
     $interval(function(){
 
@@ -62,6 +64,8 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
       })
       .success(function(data, status){
 
+          $scope.loading = false;
+
           $scope.users = data;
           console.info("All Users >>>", status);
 
@@ -70,8 +74,9 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
           console.error("All Users >>>", status, "Oops!");
       })
 
-    },30000)
+    },5000)
   });
+
 
   // Login Modal
 
@@ -131,4 +136,15 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
     $interval(function(){
       $scope.time = Date.now();
     },0)
+  });
+
+  // Custom Group Button
+
+  appGrtd.controller('mainController', function($scope) {
+
+    // set the default states
+
+    $scope.lions = false;
+    $scope.cranes = false;
+
   });
