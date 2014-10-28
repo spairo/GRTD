@@ -4,7 +4,7 @@
 
 html,
 body {
-  background: #FCFCFE;
+  background: #fff;
   font-family: 'AvenirPro', sans-serif;
   font-weight: normal;
 }
@@ -133,8 +133,8 @@ h1, h2, h3, h4, h5{
 /* Header */
 
 .header{
-  background: #34495E;
-	border-bottom: 4px #e67e22 solid;
+  background: #2c3e50;
+	border-bottom: 4px #f1c40f solid;
 }
   .header .navbar-brand{
     color: #fff;
@@ -165,9 +165,9 @@ h1, h2, h3, h4, h5{
 	border-top: 2px #bdc3c7 solid;
 	border-left: 6px #e67e22 solid;
 	border-bottom: 2px #bdc3c7 dashed;
-	background-color: #F3F4F8;
+	background-color: #EEF1F2;
 	width: 100%;
-	min-height: 80px;
+	height: auto;
 	overflow: hidden;
 	padding: 10px 5px 10px 5px;
 }
