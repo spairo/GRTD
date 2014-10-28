@@ -18,6 +18,9 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
   // Dashboard Controller
 
   appGrtd.controller('DashCtrl', function($scope, $http, $interval){
+
+    $scope.loading = true;
+
     $interval(function(){
 
         $scope.grid = { op : 'grtd', cUmbral : '1800'};
@@ -29,6 +32,8 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .success(function(data, status){
+
+            $scope.loading = false;
 
             $scope.general = data;
             console.info("All Dash Resources >>>", status);
@@ -166,9 +171,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
       .error(function(data, status){
           console.error("Login >>>", data + status, "Oops!");
       })
-
     };
-
   });
 
   // Clock Live Controller
@@ -179,12 +182,17 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
     },0)
   });
 
-  // Custom Group Button
+  // Custom Group Controller
 
   appGrtd.controller('TabsCtrl', function($scope) {
 
     $scope.users = false;
-    $scope.cranes = false;
-    $scope.bird = false;
+    $scope.setting = false;
+    $scope.state = false;
+  });
 
+  // Navbar Controller
+
+  appGrtd.controller('NavbarCtrl', function($scope){
+      $scope.navbarCollapsed = true;
   });
