@@ -45,90 +45,178 @@
 </div>
 
 <div class="container" ng-controller="DashCtrl">
-  <h1 class="text-center">Dashboard <span class="glyphicon glyphicon-dashboard"></h1>
-  <div class="row dashboard">
+  <h1>Dashboard <span class="glyphicon glyphicon-dashboard"></h1>
+  <div class="row dashboard" ng-repeat="status in general">
+
     <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
-      <span class="text-top">foo</span>
-      <div  class="circle">
-        <span class="param">14</span>
-      </div>
-      <span class="text-button">Firmados</span>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
-      <span class="text-top">foo</span>
-      <div class="circle">
-        <span class="param">14</span>
-      </div>
-      <span class="text-button">Firmados</span>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
-      <span class="text-top">foo</span>
-      <div  class="circle">
-        <span class="param">14</span>
-      </div>
-      <span class="text-button">Firmados</span>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
-      <span class="text-top">foo</span>
-      <div  class="circle">
-        <span class="param">14</span>
-      </div>
-      <span class="text-button">Firmados</span>
-    </div>
-  </div>
-  <!--
-  <div class="dashboard row" ng-repeat="status in general">
-    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
+      <span class="text-top">1</span>
       <div  class="circle">
         <span class="param">{{status.Firmados}}</span>
       </div>
       <span class="text-button">Firmados</span>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">2</span>
       <div  class="circle">
-        <div>{{status.Disponibles}}</div>
+        <span class="param">{{status.Disponibles}}</span>
       </div>
-      <span class="text-button">Firmados</span>
+      <span class="text-button">Disponibles</span>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
-      <div  class="circle">
-        <div>{{status.NoDisponibles}}</div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">3</span>
+      <div class="circle">
+        <span class="param">{{status.NoDisponibles}}</span>
       </div>
       <span class="text-button">No Disponibles</span>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top">En Atención</span>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">4</span>
       <div  class="circle">
-        <div>{{status.EnAtencion}} - {{status.EnAtencion}}</div>
+        <span class="param">{{status.EnAtencion}}</span>
       </div>
-      <span class="text-button"></span>
+      <span class="text-button">En Atención</span>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">5</span>
       <div  class="circle">
-        <div>{{status.Reunion}}</div>
+        <span class="param">{{status.Reunion}}</span>
       </div>
       <span class="text-button">Reunión</span>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">6</span>
       <div  class="circle">
-        <div>{{status.Descanso}}</div>
+        <span class="param">{{status.Descanso}}</span>
       </div>
       <span class="text-button">Descanso</span>
-    </div>-->
-    <!--
-    <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
-      <span class="text-top"></span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">7</span>
       <div  class="circle">
-        <div>{{status.Bano}}</div>
+        <span class="param">{{status.Bano}}</span>
       </div>
       <span class="text-button">Baño</span>
-    </div>-->
-    <!--
+    </div>
+    <!-- //First Block -->
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Recibidas</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHRec}}</span>
+      </div>
+      <span class="text-button">f:{{status.fbhRec}} - t:{{status.thRec}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Atendidas</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHAte}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbhAte}} - t: {{status.thAte}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Espera</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHEsp}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbhEsp}} - t: {{status.thEsp}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Atención</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHEnAte}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbhEnAte}} - t: {{status.thEnAte}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Descartadas</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHDes}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbhDes}} - t: {{status.thDes}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">TME</span>
+      <div  class="circle2">
+        <span class="param">m {{TME}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbTME}} - t: {{status.TME}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">TMO</span>
+      <div  class="circle2">
+        <span class="param">m {{TMO}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbTMO}} - t: {{status.TMO}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Nivel de Servicio</span>
+      <div  class="circle2">
+        <span class="param">{{status.NivelServicio}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbNivelServicio}} - t: {{status.fbNivelServicio}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Casos</span>
+      <div  class="circle2">
+        <span class="param">{{TotalCases}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbCasos}} - t: {{status.tCasos}}</span>
+    </div>
+
+
+    <!-- //Second Block -->
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Pendientes en Horario D/A</span>
+      <div  class="circle3">
+        <span class="param">{{TotalAte}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbadRec}} - t: {{status.tadRec}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Atendidas</span>
+      <div  class="circle3">
+        <span class="param">{{TotalAte}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbadAte}} - t: {{status.tadAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Atención</span>
+      <div  class="circle3">
+        <span class="param">{{TotalEnAte}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbadEnAte}} - t: {{status.tadEnAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Espera</span>
+      <div  class="circle3">
+        <span class="param">{{TotalEsp}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbadEnAte}} - t: {{status.tadEnAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Descartadas</span>
+      <div  class="circle3">
+        <span class="param">{{TotalDes}}</span>
+      </div>
+      <span class="text-button">f: {{status.fbadEnAte}} - t: {{status.tadEnAte}}</span>
+    </div>
+    <!-- //Three Block -->
+
+
+
+  </div>
+  <!--
+  <div class="dashboard row" ng-repeat="status in general">
+
     <div class="col-xs-12 col-sm-4 col-md-4 well-sm">
       <span class="text-top">Recibidas</span>
       <div  class="circle">

@@ -37,13 +37,54 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
             var tcase = data[0].tCasos;
             var fcase = data[0].fbCasos;
             $scope.TotalCases = tcase + fcase;
-            //console.log("total cases", $scope.TotalCases);
+
+            var fate = data[0].fbadRec;
+            var tate = data[0].tadRec;
+            $scope.TotalAte = fate + tate;
+
+            var fate = data[0].fbadAte;
+            var tate = data[0].tadAte;
+            $scope.TotalAte = fate + tate;
+
+            var fEnAte = data[0].fbadEnAte;
+            var tEnAte = data[0].tadEnAte;
+            $scope.TotalEnAte = fEnAte + tEnAte;
+
+            var fEsp = data[0].fbadEsp;
+            var tEsp = data[0].tadEsp;
+            $scope.TotalEsp = fEsp + tEsp;
+
+            var fDes = data[0].fbadDes;
+            var tDes = data[0].tadDes;
+            $scope.TotalDes = fDes + tDes;
+
+            //Set Second block Logic
+
+            var fhrec = data[0].fbhRec;
+            var threc = data[0].thRec;
+            $scope.TotalHRec = fhrec + threc;
+
+            var fhAte = data[0].fbhAte;
+            var thAte = data[0].thAte;
+            $scope.TotalHAte = fhAte + thAte;
+
+            var fhEsp = data[0].fbhEsp;
+            var thEsp = data[0].thEsp;
+            $scope.TotalHEsp = fhEsp + thEsp;
+
+            var fHEnAte = data[0].fbhEnAte;
+            var tHEnAte = data[0].thEnAte;
+            $scope.TotalHEnAte = fHEnAte + tHEnAte;
+
+            var fbhDes = data[0].fbhDes;
+            var thDes = data[0].thDes;
+            $scope.TotalHDes = fbhDes + thDes;
 
         })
         .error(function(data, status){
             console.error("All DashCtrl Resources >>>", status, "Oops!");
         })
-    },5000)
+    },3000)
   });
 
   // Users Controller
