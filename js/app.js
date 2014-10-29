@@ -85,6 +85,23 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
             var thDes = data[0].thDes;
             $scope.TotalHDes = fbhDes + thDes;
 
+
+            var fbTME1 = data[0].fbTME;
+            //parseInt(val, 16) / 60000);
+
+            //$scope.fbTME = fbTME * 1000 / 60;
+            $scope.fbTME = parseInt(fbTME1, 16) / 60000);
+
+            var TME = data[0].TME;
+            $scope.TME = TME /60;
+
+
+            $scope.v = {
+                Dt: Date.now(),
+                sDt: TME,
+                DDt: Date.parse(TME)
+            }
+            //parseInt(val, 16) / 60000);
         })
         .error(function(data, status){
             console.error("All DashCtrl Resources >>>", status, "Oops!");

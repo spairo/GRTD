@@ -369,9 +369,6 @@ h1, h2, h3, h4, h5{
       display: block;
    		text-align: center;
   	}
-    .dashboard .empty{
-      color: #fff;
-    }
     .dashboard .camo{
       color: #fff;
       display: block;

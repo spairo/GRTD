@@ -110,8 +110,11 @@
 </div>
 
 <div class="container" ng-controller="DashCtrl">
+
   <h1 class="text-center">Dashboard</h1>
+
   <div class="spinner-64" ng-show="loading"></div>
+
   <div class="row dashboard" ng-repeat="status in general">
 
     <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
@@ -208,9 +211,9 @@
     <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
       <span class="text-top">TME</span>
       <div  class="circle2">
-        <span class="param">m {{TME}}</span>
+        <span class="param">m {{TMEE}}</span>
       </div>
-      <span class="text-button"><i class="icon-facebook"></i>{{status.fbTME}} <i class="icon-twitter"></i>{{status.TME}}</span>
+      <span class="text-button"><i class="icon-facebook"></i>{{fbTME}}<i class="icon-twitter"></i>{{TME}}</span>
     </div>
 
     <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
