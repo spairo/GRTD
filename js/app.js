@@ -36,75 +36,53 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
             $scope.loading = false;
 
             $scope.general = data;
-            console.info("All Dash Resources >>>", status);
+            console.info("Get Dash Resources >>>", status);
 
-            //Logic
-            var tcase = data[0].tCasos;
-            var fcase = data[0].fbCasos;
-            $scope.TotalCases = tcase + fcase;
-
-            var fate = data[0].fbadRec;
-            var tate = data[0].tadRec;
-            $scope.TotalAte = fate + tate;
-
-            var fate = data[0].fbadAte;
-            var tate = data[0].tadAte;
-            $scope.TotalAte = fate + tate;
-
-            var fEnAte = data[0].fbadEnAte;
-            var tEnAte = data[0].tadEnAte;
-            $scope.TotalEnAte = fEnAte + tEnAte;
-
-            var fEsp = data[0].fbadEsp;
-            var tEsp = data[0].tadEsp;
-            $scope.TotalEsp = fEsp + tEsp;
-
-            var fDes = data[0].fbadDes;
-            var tDes = data[0].tadDes;
-            $scope.TotalDes = fDes + tDes;
+            //Set First Block
+            $scope.TotalCases = data[0].tCasos + data[0].fbCasos;
+            $scope.TotalAte = data[0].fbadRec + data[0].tadRec;
+            $scope.TotalAte = data[0].fbadAte + data[0].tadAte;
+            $scope.TotalEnAte = data[0].fbadEnAte + data[0].tadEnAte;
+            $scope.TotalEsp = data[0].fbadEsp + data[0].tadEsp;
+            $scope.TotalDes = data[0].fbadDes + data[0].tadDes;
 
             //Set Second block Logic
+            $scope.TotalHRec = data[0].fbhRec + data[0].thRec;
+            $scope.TotalHAte = data[0].fbhAte + data[0].thAte;
+            $scope.TotalHEsp = data[0].fbhEsp + data[0].thEsp;
+            $scope.TotalHEnAte = data[0].fbhEnAte + data[0].thEnAte;
+            $scope.TotalHDes = data[0].fbhDes + data[0].thDes;
 
-            var fhrec = data[0].fbhRec;
-            var threc = data[0].thRec;
-            $scope.TotalHRec = fhrec + threc;
+            $scope.fbTME = data[0].fbTME / 60;
+            $scope.TME = data[0].TME / 60;
+            $scope.TMEgral = (((data[0].fbTME + data[0].TME) / 2) /60);
 
-            var fhAte = data[0].fbhAte;
-            var thAte = data[0].thAte;
-            $scope.TotalHAte = fhAte + thAte;
+            $scope.fbTME = data[0].fbTME / 60;
+            $scope.TME = data[0].TME / 60;
+            $scope.ME = (((data[0].fbTME + data[0].TME) / 2) /60);
 
-            var fhEsp = data[0].fbhEsp;
-            var thEsp = data[0].thEsp;
-            $scope.TotalHEsp = fhEsp + thEsp;
+            $scope.fbTMO = data[0].fbTMO /60;
+            $scope.TMO = data[0].TMO / 60;
+            $scope.MO = (((data[0].fbTMO + data[0].TMO) / 2) /60);
 
-            var fHEnAte = data[0].fbhEnAte;
-            var tHEnAte = data[0].thEnAte;
-            $scope.TotalHEnAte = fHEnAte + tHEnAte;
+            //Set Third block Logic
+            $scope.TCgen = data[0].fbCgen + data[0].tCgen;
+            $scope.TCesc = data[0].fbCesc + data[0].tCesc;
+            $scope.TCrev = data[0].fbCrev + data[0].tCrev;
+            $scope.TfRec = data[0].fbfRec + data[0].tfRec;
+            $scope.TfAte = data[0].fbfAte + data[0].tfAte;
+            $scope.TfDes = data[0].fbfDes + data[0].tfDes;
+            $scope.TfEsp = data[0].fbfEsp + data[0].tfEsp;
+            $scope.TfEnAte = data[0].fbfEnAte + data[0].tfEnAte;
 
-            var fbhDes = data[0].fbhDes;
-            var thDes = data[0].thDes;
-            $scope.TotalHDes = fbhDes + thDes;
+            $scope.FMEout = data[0].fbtmeFuera;
+            $scope.TMEout = data[0].tmeFuera;
 
+            $scope.AllMEout = (((data[0].fbtmeFuera + data[0].tmeFuera) / 2) / 60);
 
-            var fbTME1 = data[0].fbTME;
-            //parseInt(val, 16) / 60000);
-
-            //$scope.fbTME = fbTME * 1000 / 60;
-            $scope.fbTME = parseInt(fbTME1, 16) / 60000);
-
-            var TME = data[0].TME;
-            $scope.TME = TME /60;
-
-
-            $scope.v = {
-                Dt: Date.now(),
-                sDt: TME,
-                DDt: Date.parse(TME)
-            }
-            //parseInt(val, 16) / 60000);
         })
         .error(function(data, status){
-            console.error("All DashCtrl Resources >>>", status, "Oops!");
+            console.error("All Dash Resources >>>", status, "Oops!");
         })
     },3000)
   });
@@ -132,6 +110,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
           $scope.users = data;
           console.info("All Users >>>", status);
 
+          $compileProvider.debugInfoEnabled(true)
       })
       .error(function(data, status){
           console.error("All Users >>>", status, "Oops!");
@@ -143,7 +122,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Login Modal
 
-  var ModalLoginCtrl = function ($scope, $modal) {
+  appGrtd.controller('ModalCtrl', function($scope, $modal){
 
       $scope.openlogin = function (size) {
 
@@ -157,7 +136,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
             }
           });
       };
-  };
+  });
 
   var ModalInstanceCtrl = function ($scope, $modalInstance) {
     $scope.cancel = function () {

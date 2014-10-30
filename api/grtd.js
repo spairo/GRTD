@@ -813,6 +813,7 @@ function validSecond(obj, sec) {
 
 function colors(obj, val) {
     if (obj == "Espera") {
+
         if (parseInt(val) > parseInt(nEspera)) {
             $("#" + obj).removeClass("normalNum").addClass("numRed");
         }
