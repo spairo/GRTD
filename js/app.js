@@ -1,8 +1,8 @@
 'use strict';
 
-var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap']);
+var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap']);
 
-  appGrtd.config(function($stateProvider, $urlRouterProvider){
+  Grtdapp.config(function($stateProvider, $urlRouterProvider){
 
       $urlRouterProvider.otherwise('/dashboard');
 
@@ -17,13 +17,13 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Dashboard Controller
 
-  appGrtd.controller('DashCtrl', function($scope, $http, $interval){
+  Grtdapp.controller('DashCtrl', function($scope, $http, $interval){
 
     $scope.loading = true;
 
     $interval(function(){
 
-        $scope.grid = { op : 'grtd', cUmbral : '1800'};
+        $scope.grid = { op : 'grtd', cUmbral : '1800' };
 
         $http({
            method : 'POST',
@@ -89,7 +89,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Users Controller
 
-  appGrtd.controller('UsersCtrl', function($scope, $http, $interval){
+  Grtdapp.controller('UsersCtrl', function($scope, $http, $interval){
 
     $scope.loading = true;
 
@@ -106,11 +106,9 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
       .success(function(data, status){
 
           $scope.loading = false;
-
           $scope.users = data;
           console.info("All Users >>>", status);
 
-          $compileProvider.debugInfoEnabled(true)
       })
       .error(function(data, status){
           console.error("All Users >>>", status, "Oops!");
@@ -119,10 +117,9 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
     },5000)
   });
 
+  // Modal Controller
 
-  // Login Modal
-
-  appGrtd.controller('ModalCtrl', function($scope, $modal){
+  Grtdapp.controller('ModalCtrl', function($scope, $modal){
 
       $scope.openlogin = function (size) {
 
@@ -131,48 +128,62 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
             controller: ModalInstanceCtrl,
             size: size,
             backdrop: 'static',
-            resolve: {
-
-            }
+            resolve: {}
           });
       };
   });
 
   var ModalInstanceCtrl = function ($scope, $modalInstance) {
     $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+      $modalInstance.dismiss('cancel');
     };
   };
 
   // Login Controller
 
-  appGrtd.controller('LoginCtrl', function($scope, $http) {
+  Grtdapp.controller('LoginCtrl', function($scope, $http, LoginService, $modalStack) {
 
-    $scope.login = {};
+    $scope.login = { op: "validateLogin", accion: "1", cLogin: "", cPass: "" };
 
     $scope.Login = function() {
+        $http({
+           method : 'POST',
+           url : 'api/rest.php',
+           data : $.param($scope.login),
+           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(data, status){
 
-      $scope.data = { op : 'validateLogin', accion : '1'};
+            var Error = data[0].Error;
+            var Nombre =  data[0].Nombre;
 
-      $http({
-         method : 'POST',
-         url : 'api/rest.php',
-         data : $.param($scope.data),
-         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-      })
-      .success(function(data, status){
-          //$scope.users = data;
-          console.info(data);
-      })
-      .error(function(data, status){
-          console.error("Login >>>", data + status, "Oops!");
-      })
+            $scope.LoginServ = LoginService;
+            $scope.LoginServ.nodo = Error;
+            $scope.LoginServ.name = Nombre;
+
+            //$modalInstance.dismiss('cancel');
+            $modalStack. dismissAll();
+            //$scope.msg = data[0].
+            //if()
+        })
+        .error(function(data, status){
+            console.error("Login >>>", status, "Oops!");
+        })
     };
+
+  });
+
+  // Settings Controller
+
+  Grtdapp.controller('SettingsCtrl', function($scope, $http){
+      $scope.updateSettings = function() {
+        alert("not working");
+      };
   });
 
   // Clock Live Controller
 
-  appGrtd.controller('TimeCtrl', function($scope, $interval){
+  Grtdapp.controller('TimeCtrl', function($scope, $interval){
     $interval(function(){
       $scope.time = Date.now();
     },0)
@@ -180,8 +191,7 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Custom Group Controller
 
-  appGrtd.controller('TabsCtrl', function($scope) {
-
+  Grtdapp.controller('TabsCtrl', function($scope) {
     $scope.users = false;
     $scope.setting = false;
     $scope.state = false;
@@ -189,6 +199,13 @@ var appGrtd = angular.module('appGrtd', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Navbar Controller
 
-  appGrtd.controller('NavbarCtrl', function($scope){
+  Grtdapp.controller('NavbarCtrl', function($scope, LoginService){
       $scope.navbarCollapsed = true;
+      $scope.status = LoginService;
+  });
+
+  //Factories
+
+  Grtdapp.factory('LoginService',function(){
+    return { nodo:"", name:""};
   });

@@ -20,7 +20,7 @@
     <h1>Status</h1>
   </div>
 
-  <div class="row settings" ng-show="setting">
+  <div class="row settings" ng-show="setting" ng-controller="SettingsCtrl">
     <h1><span class="glyphicon glyphicon-cog"></span> Settings</h1>
     <form class="form-inline" role="form">
         <div class="row">
@@ -65,7 +65,7 @@
             </div>
           </div>
           <div class="col-md-2">
-            <button type="submit" class="btn btn-default">Guardar</button>
+            <button ng-click="updateSettings()" class="btn btn-default">Guardar</button>
           </div>
         </div>
     </form>

@@ -107,19 +107,21 @@ function ajaxResponseInfo() {
 
 $(document).ready(function(){
 
+    var foo = { op: "validateLogin", cLogin: "master", cPass: "master", accion: "1" };
+
     $.ajax({
         type: 'POST',
         url: 'api/rest.php',
-        data : { op : 'getAgentesEstado'},
+        data : foo,
         dataType: 'json',
         success: function (data) {
+
+            console.info("faaaaa");
             console.info(data);
-            for (var i = data.length - 1; i >= 0; i--) {
-                data[i]
-            };
+
         },
         error: function (data) {
-            console.error("No Existe");
+            console.info("No Existe login");
         }
     });
 //}

@@ -20,21 +20,24 @@
 		break;
 
 		case 'validateLogin':
-			$res = $ws->getAgentesEstado();
-			echo $res->validateLoginResponse;
+			$a = array(
+				'accion' => $_POST['accion'],
+				'cLogin' => $_POST['cLogin'],
+				'cPass' => $_POST['cPass']
+			);
+			$res = $ws->validateLogin($a);
+			echo $res->validateLoginResult;
 		break;
-
 
 		case 'grtdArea':
 			$a = array('cUmbral' => $_POST['cUmbral'],
 			'skill' => $_POST['skill']);
-			$res = $ws->grtdArea  ($a);
+			$res = $ws->grtdArea($a);
 			echo $res->grtdAreaResult ;
 		break;
 
 		default:
 			echo 'No hay opciones disponibles';
 		break;
-
 	}
 ?>
