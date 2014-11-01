@@ -2,8 +2,21 @@
 
   <div class="row">
     <div class="col-sm-4"><h1>GRTD <small>summer</small></h1></div>
-    <div class="col-sm-2 col-sm-offset-6">
+    <div class="col-sm-4 col-sm-offset-4">
       <div class="btn-group btn-group-justified">
+        <!-- Admin -->
+
+        <div class="btn-group btn-group-lg">
+          <button type="button" class="btn btn-grtd"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+        </div>
+        <div class="btn-group btn-group-lg">
+          <button type="button" class="btn btn-grtd"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+        </div>
+        <div class="btn-group btn-group-lg">
+          <button type="button" class="btn btn-grtd"><span class="glyphicon glyphicon-transfer"></span></button>
+        </div>
+
+        <!-- //Admin -->
         <div class="btn-group btn-group-lg">
           <button type="button" ng-click="users = !users" ng-class="{ active: users }" class="btn btn-grtd"><span class="glyphicon glyphicon-user"></span></button>
         </div>
@@ -11,7 +24,7 @@
           <button type="button" ng-click="state = !state" ng-class="{ active: state }" class="btn btn-grtd"><span class="glyphicon glyphicon-flag"></span></button>
         </div>
         <div class="btn-group btn-group-lg">
-          <button type="button" ng-click="setting = !setting" ng-class="{ active: setting }" class="btn btn-grtd"><span class="glyphicon glyphicon-cog"></span></button>
+          <button type="button" ng-click="setting = !setting" ng-class="{ active: setting }" class="btn btn-grtd"><span class="glyphicon glyphicon-wrench"></span></button>
         </div>
       </div>
     </div>
@@ -73,7 +86,7 @@
 
   <div class="row"ng-show="users">
     <div class="row users_section" ng-controller="UsersCtrl">
-      <div class="table-responsivee">
+      <div class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -99,7 +112,11 @@
                 <div ng-if="user.nActividad_ID == '8'">In Attention</div>
               </td>
               <td>{{user.Tiempo}}</td>
-              <td><button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button></td>
+              <td>
+                <div ng-if="user.nActividad_ID == '8'">
+                  <button type="button" class="flat-button"><span class="glyphicon glyphicon-refresh"></span> Liberar</button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
