@@ -251,6 +251,12 @@ h1, h2, h3, h4, h5{
   .settings .input-set{
     width: 50px;
   }
+  .settings .text{
+    color: #7f8c8d;
+  }
+  .settings .glyphicon-ok{
+    color: #27ae60;
+  }
 
 /* Dashboard */
 
