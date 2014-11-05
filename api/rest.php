@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	header('Content-type: application/json');
-
-	$ws = new SoapClient('http://172.18.53.180/summerhouston/supervisor/webservice1.asmx?WSDL');
+	
+	$ws = new SoapClient('http://148.244.88.197/summerhouston/supervisor/webservice1.asmx?WSDL');
 
 	$opcion = (isset($_POST['op'])) ? $_POST['op'] : $_GET['op'];
 
