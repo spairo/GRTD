@@ -181,6 +181,9 @@ h1, h2, h3, h4, h5{
   .header .navbar-brand{
     color: #fff;
   }
+    .header .navbar-brand:hover{
+      color: #fff;
+    }
   .header a{
     font-family: "AvenirPro", sans-serif;
     font-size: 21px;
