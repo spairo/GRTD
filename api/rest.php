@@ -36,6 +36,16 @@
 			echo $res->grtdAreaResult ;
 		break;
 
+		case 'buscaCasos':
+			$a = array(
+				'cDn' => $_POST['cDn'],
+				'tMail' => $_POST['tMail'],
+				'userId' => $_POST['userId']
+			);
+			$res = $ws->buscaCasos($a);
+			echo $res->buscaCasosResult;
+		break;
+
 		default:
 			echo 'No hay opciones disponibles';
 		break;

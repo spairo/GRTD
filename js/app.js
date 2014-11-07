@@ -55,19 +55,13 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
      $scope.goFullscreen = function(){
 
-        // Fullscreen
-        if (Fullscreen.isEnabled())
-            Fullscreen.cancel();
-        else
-            Fullscreen.all();
+        if(Fullscreen.isEnabled()){
+          Fullscreen.cancel();
+        }
+        else{
+          Fullscreen.all();
+        }
      };
-
-     $scope.isFullScreen = false;
-
-     $scope.goFullScreenViaWatcher = function() {
-        $scope.isFullScreen = !$scope.isFullScreen;
-     };
-
   });
 
   // Dashboard Main Controller
@@ -420,7 +414,7 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Login Controller
 
-  Grtdapp.controller('LoginCtrl', function($scope, $http, LoginService, $modalStack) {
+  Grtdapp.controller('LoginCtrl', function($scope, $http, $modalStack, LoginService) {
 
     $scope.login = { op: "validateLogin", accion: "1", cLogin: "", cPass: "" };
 
@@ -440,7 +434,6 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
             $scope.LoginServ.nodo = Error;
             $scope.LoginServ.name = Nombre;
 
-
             $modalStack. dismissAll();
         })
         .error(function(data, status){
@@ -449,6 +442,36 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
     };
 
   });
+
+  // Cases Controller
+
+  Grtdapp.controller('FindCasesCtrl', function($scope, $http, $log){
+
+    $scope.case = { op: "buscaCasos", cDn: "", tMail: "", userId: "" };
+
+    $scope.findcases = function(){
+
+      $http({
+         method : 'POST',
+         url : 'api/rest.php',
+         data : $.param($scope.case),
+         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+      })
+      .success(function(data, status){
+
+        $scope.Casos = data;
+        console.info("Get Cases List >>>", status);
+
+
+      })
+      .error(function(data, status){
+          console.error("Get Case List >>>", status, "Oops!");
+      })
+
+    };
+
+  });
+
 
   // Settings Controller
 

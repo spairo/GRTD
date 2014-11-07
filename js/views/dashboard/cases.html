@@ -1,25 +1,81 @@
 <div class="container">
-  <h1 class="pull-left">GRTD <small>summer</small></h1>
-  <div class="case-search">
-    <h3 class="text-center">Buscar Casos</h3>
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-sm-12 col-md-6">
-        <form class="form-inline" role="form">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Usuario">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="DN">
-            </div>
-            <div class="form-group">
-              <input class="form-control" type="email" placeholder="Mail">
-            </div>
-            <button type="submit" class="btn btn-default">social</button>
-        </form>
+
+</div>
+
+<br />
+
+<div ng-controller="FindCasesCtrl" class="container">
+  <div class="row">
+    <h5 class="text-center">Buscar Casos</h5>
+    <div class="col-sm-4 col-md-4"></div>
+    <div class="col-xs-12 col-sm-4 col-md-4 case-search">
+
+      <form class="" role="form">
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" ng-model="case.userId" placeholder="Usuario">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" ng-model="case.cDn" placeholder="DN">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control input-sm" ng-model="case.tMail" placeholder="Mail">
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <a href="#/dashboard/cases" ng-click="findcases()"><div class="twitter"></div></a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <a href="#/dashboard/cases" ng-click="findcases()"><div class="facebook"></div></a>
+        </div>
       </div>
-      <div class="col-md-3"></div>
+
     </div>
-    <h4 class="text-center">Selecciona un Canal</h4>
+    <div class="col-sm-4 col-md-4"></div>
+  </div>
+  <!-- //Search Case-->
+
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 info-profile">
+          <div class="pic">
+            <img src="http://cdn.crowdfundinsider.com/shared/avatars/blank_avatar.png" width="110" alt="profile" class="img-circle">
+          </div>
+          <h5 class="text-center">Name Lastname</h5>
+          <div class="overview">"Graphic DesIgner · @TeteritaInc | Extreme Sports and adrenaline, Rock Climber, Dreamer, Happiness is NOT a Destination, it's a method of Life"</div>
+          <ul class="row social">
+            <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Tweets <span>1797</span></li>
+            <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Siguiendo <span>192</span></li>
+            <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Seguidores <span>101</span></li>
+          </ul>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-3 panel-cases">
+          <h3></h3>
+        </div>
+        <div class="col-xs-12 col-md-9 panel-cases">
+          <h3>Historial</h3>
+          <span class="">{{Casos}}</span>
+
+          <div class="media" ng-repeat="caso in Casos">
+            <a class="pull-left" href="#">
+              <img class="media-object" src="img/twitter_64.png" alt="Case">
+              <span class="">{{caso.nCaso_ID}}</span>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">#{{caso.nCaso_ID}} {{caso.nCasoStatus}}</h4>
+              <p>Tipificación: {{caso.tipificacion}} Descripción: {{caso.descripcion}} Tipifico: {{caso.cLogin_Apellidos}} {{caso.cLogin_Nombre}}</p>
+              <code>{{caso.fechainicio}} {{caso.fechafin}}</code>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>

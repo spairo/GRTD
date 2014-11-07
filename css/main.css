@@ -250,9 +250,11 @@ h1, h2, h3, h4, h5{
   }
 	.users_section th{
 		font-family: 'AvenirPro', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
 		color: #555964;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 	}
 	.users_section td{
 		font-family: 'AvenirPro', sans-serif;
@@ -581,16 +583,98 @@ h1, h2, h3, h4, h5{
 /* Cases Page */
 
 .case-search{
-  width: 100%;
   min-height: 50px;
   background: #ecf0f1;
-  border-bottom: 4px solid #bdc3c7;
-  border-radius: 0px;
   overflow: hidden;
-  margin: 10px 0 10px 0;
+  padding: 15px;
+  border-radius: 6px;
 }
+  .case-search .twitter{
+    background: transparent url('../img/twitter_64.png');
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+  }
+  .case-search .facebook{
+    background: transparent url('../img/facebook_64.png');
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+  }
+
+.info-profile{
+  min-height: 150px;
+  background: #ecf0f1;
+}
+  .info-profile h5{
+    color: #A4A5A6;
+    text-align: center;
+    font-family: 'AvenirPro', sans-serif;
+    font-weight: bold;
+  }
+  .info-profile .overview{
+    margin: 5px 0;
+    color: #A4A5A6;
+    text-align: center;
+    font-style: italic;
+    font-family: 'AvenirPro', sans-serif;
+    font-weight: normal;
+    text-transform: capitalize;
+    font-size: 11px;
+  }
+  .info-profile .pic{
+    width:110px;
+    margin: 20px auto;
+  }
+  .info-profile .img-circle{
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #bdc3c7;
+  }
+  .info-profile .social{
+    margin: 20px 0;
+    list-style: none;
+  }
+  .info-profile .socialphy{
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #B9C1CE;
+  }
+    .info-profile .socialphy span{
+      display: block;
+      color: #51545D;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 0px;
+    }
+
+.panel-cases{
+  background: #fff;
+  min-height: 150px;
+}
+  .panel-cases h3{
+    color: #51545d;
+    font-weight: bold;
+  }
+  .panel-cases .media{
+    padding: 10px 0 0 0;
+    border-right: 4px #bdc3c7 solid;
+  }
+  .panel-cases .media:nth-child(odd) {
+    background: #ecf0f1;
+    border-right: 4px #bdc3c7 solid;
+  }
 
 
+
+
+
+
+.panel-about{
+  background: #fff;
+  min-height: 350px;
+}
 
 /* Modal */
 
@@ -827,7 +911,8 @@ h1, h2, h3, h4, h5{
   }
 
 /* numbered buttons */
-#status-buttons{  }
+#status-buttons{}
+
 #status-buttons a{
   color: #fff;
   display:inline-block;

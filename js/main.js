@@ -107,7 +107,7 @@ function ajaxResponseInfo() {
 
 $(document).ready(function(){
 
-    var foo = { op: "validateLogin", cLogin: "master", cPass: "master", accion: "1" };
+    var foo = { op: "buscaCasos", cDn: "5536897600", tMail: "", userId: "" };
 
     $.ajax({
         type: 'POST',
@@ -116,13 +116,13 @@ $(document).ready(function(){
         dataType: 'json',
         success: function (data) {
 
-            console.info("faaaaa");
+            console.info("entro");
             console.info(data);
 
         },
         error: function (data) {
-            console.info("No Existe login");
+            console.info("No Existe caso");
         }
     });
-//}
+
 });
