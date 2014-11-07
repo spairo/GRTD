@@ -461,7 +461,7 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
         $scope.Casos = data;
         console.info("Get Cases List >>>", status);
-
+        
       })
       .error(function(data, status){
           console.error("Get Case List >>>", status, "Oops!");
