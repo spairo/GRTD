@@ -445,32 +445,82 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Cases Controller
 
-  Grtdapp.controller('FindCasesCtrl', function($scope, $http, $log){
+  Grtdapp.controller('FindCasesCtrl', function($scope, $http){
 
-    $scope.case = { op: "buscaCasos", cDn: "", tMail: "", userId: "" };
+    var a = $scope.cDn;
+    var b = $scope.tMail;
+    var c = $scope.userId;
+
+    //$scope.case = { op: "buscaCasos", cDn: $scope.cDn, tMail: $scope.tMail, userId: $scope.userId };
 
     $scope.findcases = function(){
+
+        alert(a);
+        //Get History
+
+        $http({
+           method : 'POST',
+           url : 'api/rest.php',
+           data : $.param($scope.case),
+           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(data, status){
+
+          $scope.Casos = data;
+          console.info("Get Cases List >>>", status);
+
+        })
+        .error(function(data, status){
+          console.error("Get Case List >>>", status, "Oops!");
+        })
+
+    };
+
+    $scope.case2 =  { op: 'datosCliente', userId: $scope.userId, cDn: $scope.cDn, tMail: $scope.tMail }
+
+    $scope.findInfo = function(){
+
+        //Get Customer Info
+
+        $http({
+           method : 'POST',
+           url : 'api/rest.php',
+           data : $.param($scope.case2),
+           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(data, status){
+          alert($scope.customersinfo);
+          $scope.customersinfo = data;
+          console.info("Get Customer Info >>>", status);
+
+        })
+        .error(function(data, status){
+          alert("fallo");
+          console.error("Get Customer Info >>>", status, "Oops!");
+        })
+
+    };
+
+      //Pendiente
+      /*
+      $scope.twitt = { op: 'getInfoTwitter', twitterUserID: '288221948' };
 
       $http({
          method : 'POST',
          url : 'api/rest.php',
-         data : $.param($scope.case),
+         data : $.param($scope.twitt),
          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
       })
-      .success(function(data, status){
-
-        $scope.Casos = data;
-        console.info("Get Cases List >>>", status);
-        
+      .success(function(data){
+        console.warn("getInfoTwitter >>>", data);
       })
       .error(function(data, status){
-          console.error("Get Case List >>>", status, "Oops!");
+        console.error("getInfoTwitter", status, "Oops!");
       })
+      */
 
-    };
 
   });
-
 
   // Settings Controller
 
@@ -515,6 +565,7 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   //Factories
 
+  //Login
   Grtdapp.factory('LoginService',function(){
     return { nodo:"", name:""};
   });

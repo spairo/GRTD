@@ -107,21 +107,23 @@ function ajaxResponseInfo() {
 
 $(document).ready(function(){
 
-    var foo = { op: "buscaCasos", cDn: "5536897600", tMail: "", userId: "" };
+    //var foo = { op: 'getInfoTwitter', twitterUserID: '288221948' };
+
+    //var foo = { op: 'datosCliente', userId: '', cDn: '5536897600', tMail: '' }
 
     $.ajax({
         type: 'POST',
         url: 'api/rest.php',
-        data : foo,
+        data : { op: 'datosCliente', userId: '', cDn: '5536897600', tMail: '' },
         dataType: 'json',
         success: function (data) {
 
-            console.info("entro");
+            console.info("Respuesta de Get twitter info");
             console.info(data);
-
+            alert(data);
         },
         error: function (data) {
-            console.info("No Existe caso");
+            console.info("Errorsote");
         }
     });
 

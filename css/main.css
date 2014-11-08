@@ -603,6 +603,7 @@ h1, h2, h3, h4, h5{
   }
 
 .info-profile{
+  margin-botton: 10px;
   min-height: 150px;
   background: #ecf0f1;
 }
@@ -663,7 +664,24 @@ h1, h2, h3, h4, h5{
   }
   .panel-cases .media:nth-child(odd) {
     background: #ecf0f1;
-    border-right: 2px #bdc3c7 solid;
+    border-right: 4px #bdc3c7 solid;
+  }
+  .panel-cases .media a{
+    text-decoration: none;
+  }
+  .panel-cases .media .id{
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #7f8c8d;
+    font-weight: bold;
+  }
+  .panel-cases .media h4{
+    color: #bdc3c7;
+    font-weight: bold;
+  }
+  .panel-cases .media p{
+    color: #bdc3c7;
   }
 
 
