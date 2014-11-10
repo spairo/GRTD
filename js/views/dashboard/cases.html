@@ -1,5 +1,5 @@
 <div ng-controller="FindCasesCtrl" class="container">
-  <!--
+
   <div class="row">
     <h3 class="text-center">Buscar Casos</h3>
     <div class="col-sm-4 col-md-4"></div>
@@ -29,10 +29,9 @@
     </div>
     <div class="col-sm-4 col-md-4"></div>
   </div>
-  -->
 
   <!-- //Search Case-->
-
+<!--
   <div class="row">
     <div class="col-md-3 info-profile">
       <div class="pic">
@@ -52,18 +51,18 @@
     </div>
     <div class="col-md-6 panel-cases">
       <h3>Historial</h3>
-      <!--<div class="media" ng-repeat="caso in Casos">-->
-      <div class="media">
+      <div class="media" ng-repeat="caso in Casos">
         <a class="pull-left" href="#">
           <img class="media-object" src="img/twitter_64.png" alt="Case">
-          <div class="id">#666 {{caso.nCaso_ID}}</div>
+          <div class="id">{{caso.nCaso_ID}}</div>
         </a>
         <div class="media-body">
-          <h4 class="media-heading">Lorem Ipsum Doll Sit {{caso.nCasoStatus}}</h4>
-          <p><b>Tipificación:</b> asdasdd{{caso.tipificacion}} sadasdasd<b>Descripción:</b>12123123 {{caso.descripcion}} <b>Tipifico:</b> {{caso.cLogin_Apellidos}} {{caso.cLogin_Nombre}}</p>
+          <h4 class="media-heading">{{caso.nCasoStatus}}</h4>
+          <p><b>Tipificación:</b> asdasdd{{caso.tipificacion}}<b>Descripción:</b>{{caso.descripcion}} <b>Tipifico:</b> {{caso.cLogin_Apellidos}} {{caso.cLogin_Nombre}}</p>
           <code>In:{{caso.fechainicio}} Fn:{{caso.fechafin}}</code>
         </div>
       </div>
     </div>
   </div>
+-->
 </div>
