@@ -196,8 +196,10 @@ h1, h2, h3, h4, h5{
     color: #f5f5f5;
   }
   .header .clock{
+    position: relative;
     color: #fff;
     font-size: 12px;
+    top: 18px;
   }
   .header .login{
     font-size: 14px;
@@ -587,7 +589,7 @@ h1, h2, h3, h4, h5{
   background: #ecf0f1;
   overflow: hidden;
   padding: 15px;
-  border-radius: 6px;
+  margin: 10px 0px;
 }
   .case-search .twitter{
     background: transparent url('../img/twitter_64.png');
@@ -605,17 +607,17 @@ h1, h2, h3, h4, h5{
 .info-profile{
   margin-botton: 10px;
   min-height: 150px;
-  background: #ecf0f1;
+  background: #EEF1F2;
 }
   .info-profile h5{
-    color: #A4A5A6;
+    color: #3B3B3B;
     text-align: center;
     font-family: 'AvenirPro', sans-serif;
     font-weight: bold;
   }
   .info-profile .overview{
     margin: 5px 0;
-    color: #A4A5A6;
+    color: #A6A8A9;
     text-align: center;
     font-style: italic;
     font-family: 'AvenirPro', sans-serif;
@@ -628,8 +630,8 @@ h1, h2, h3, h4, h5{
     margin: 20px auto;
   }
   .info-profile .img-circle{
-    background: none repeat scroll 0 0 #fff;
-    border: 1px solid #bdc3c7;
+    background: #fff;
+    border: 6px solid #fff;
   }
   .info-profile .social{
     margin: 20px 0;
@@ -640,31 +642,28 @@ h1, h2, h3, h4, h5{
     font-size: 10px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #B9C1CE;
+    color: #9E9E9E;
   }
     .info-profile .socialphy span{
       display: block;
-      color: #51545D;
+      color: #605E58;
       font-size: 28px;
       font-weight: bold;
       letter-spacing: 0px;
     }
 
 .panel-cases{
-  background: #fff;
   min-height: 150px;
 }
   .panel-cases h3{
-    color: #51545d;
     font-weight: bold;
   }
   .panel-cases .media{
     padding: 10px 0 0 0;
-    border-right: 4px #bdc3c7 solid;
+    border-bottom: 5px #EEF1F2 solid;
   }
   .panel-cases .media:nth-child(odd) {
-    background: #ecf0f1;
-    border-right: 4px #bdc3c7 solid;
+    border-bottom: 5px #EEF1F2 solid;
   }
   .panel-cases .media a{
     text-decoration: none;
@@ -673,26 +672,23 @@ h1, h2, h3, h4, h5{
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    color: #7f8c8d;
+    color: #A6A8A9;
     font-weight: bold;
   }
   .panel-cases .media h4{
-    color: #bdc3c7;
+    color: #A6A8A9;
     font-weight: bold;
   }
   .panel-cases .media p{
     color: #bdc3c7;
   }
 
-
-
-
-
-
 .panel-about{
-  background: #fff;
-  min-height: 350px;
+  min-height: 150px;
 }
+  .panel-about h3{
+    font-weight: bold;
+  }
 
 /* Modal */
 
@@ -711,7 +707,7 @@ h1, h2, h3, h4, h5{
   position: relative;
   vertical-align: top;
   width: 100%;
-  height: 40px;
+  height: 50px;
   padding: 0;
   font-size: 16px;
   color: #fff;
@@ -891,6 +887,7 @@ h1, h2, h3, h4, h5{
 }
 
 /* light speed out */
+
 @-webkit-keyframes lightSpeedOut {
   0% {
     opacity: 1;

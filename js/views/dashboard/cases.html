@@ -1,4 +1,5 @@
 <div ng-controller="FindCasesCtrl" class="container">
+  <!--
   <div class="row">
     <h3 class="text-center">Buscar Casos</h3>
     <div class="col-sm-4 col-md-4"></div>
@@ -6,13 +7,13 @@
 
       <form class="" role="form">
         <div class="form-group">
-          <input type="text" class="form-control input-sm" ng-model="userId" placeholder="Usuario">
+          <input type="text" class="form-control input-lg" ng-model="userId" placeholder="Usuario">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control input-sm" ng-model="cDn" placeholder="DN">
+          <input type="text" class="form-control input-lg" ng-model="cDn" placeholder="DN">
         </div>
         <div class="form-group">
-          <input type="email" class="form-control input-sm" ng-model="tMail" placeholder="Mail">
+          <input type="email" class="form-control input-lg" ng-model="tMail" placeholder="Mail">
         </div>
       </form>
 
@@ -28,6 +29,8 @@
     </div>
     <div class="col-sm-4 col-md-4"></div>
   </div>
+  -->
+
   <!-- //Search Case-->
 
   <div class="row">
@@ -43,20 +46,21 @@
         <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Seguidores <span>101</span></li>
       </ul>
     </div>
-    <div class="col-md-3 panel-cases">
-      <h5>Informacion</h5>
-      <pre>{{customersinfo}}</pre>
+    <div class="col-md-3 panel-about">
+      <h3>Informacion</h3>
+      <div>{{customersinfo}}</div>
     </div>
     <div class="col-md-6 panel-cases">
-      <h5>Historial</h5>
-      <div class="media" ng-repeat="caso in Casos">
+      <h3>Historial</h3>
+      <!--<div class="media" ng-repeat="caso in Casos">-->
+      <div class="media">
         <a class="pull-left" href="#">
           <img class="media-object" src="img/twitter_64.png" alt="Case">
-          <div class="id">#{{caso.nCaso_ID}}</div>
+          <div class="id">#666 {{caso.nCaso_ID}}</div>
         </a>
         <div class="media-body">
-          <h4 class="media-heading">{{caso.nCasoStatus}}</h4>
-          <p><b>Tipificación:</b> {{caso.tipificacion}} <b>Descripción:</b> {{caso.descripcion}} <b>Tipifico:</b> {{caso.cLogin_Apellidos}} {{caso.cLogin_Nombre}}</p>
+          <h4 class="media-heading">Lorem Ipsum Doll Sit {{caso.nCasoStatus}}</h4>
+          <p><b>Tipificación:</b> asdasdd{{caso.tipificacion}} sadasdasd<b>Descripción:</b>12123123 {{caso.descripcion}} <b>Tipifico:</b> {{caso.cLogin_Apellidos}} {{caso.cLogin_Nombre}}</p>
           <code>In:{{caso.fechainicio}} Fn:{{caso.fechafin}}</code>
         </div>
       </div>
