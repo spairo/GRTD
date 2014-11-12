@@ -333,7 +333,7 @@ h1, h2, h3, h4, h5{
       display: block;
       margin: 0 auto;
     }
-    .dashboard .circle3:after {
+    .dashboard .circle3:after{
         content: "";
         display: block;
         width: 100%;
@@ -690,6 +690,187 @@ h1, h2, h3, h4, h5{
     font-weight: bold;
   }
 
+/* Monitor Page*/
+
+.monitor{
+
+}
+  .monitor h1{
+    margin: 0 0 10px 0;
+    text-align: center;
+  }
+  .monitor .monitor-panel{
+    overflow: hidden;
+  }
+    .monitor .monitor-panel .lupa{
+      color: #BDC3C7;
+      font-size: 16px;
+      padding-right: 5px;
+    }
+    .monitor .monitor-panel .media{
+      background: #52B3D9;
+      margin: 15px 0;
+      padding: 10px 10px;
+    }
+    .monitor .monitor-panel .media:nth-child(odd){
+      background: #81CFE0;
+    }
+    .monitor .monitor-panel .media h4{
+      color: #fff;
+      font-weight: bold;
+    }
+    .monitor .monitor-panel .media p{
+      color: #fefefe;
+    }
+    .monitor .monitor-panel .media .pull-right{
+      position: relative;
+      top: 15px;
+    }
+    .monitor .monitor-panel .media .pull-right .details-flat{
+      position: relative;
+      vertical-align: top;
+      width: 60px;
+      height: 35px;
+      padding: 0;
+      font-size: 12px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      background: #ecf0f1;
+      border: 0;
+      border-bottom: 2px solid #bdc3c7;
+      cursor: pointer;
+      -webkit-box-shadow: inset 0 -2px #bdc3c7;
+      box-shadow: inset 0 -2px #bdc3c7;
+    }
+    .monitor .monitor-panel .media .pull-right .details-flat:active {
+      top: 1px;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    .monitor .monitor-panel .media .pull-right .details-flat .glyphicon{
+      color: #7f8c8d;
+      font-size: 18px;
+    }
+    .monitor .monitor-panel .media .date{
+      color: #C5EFF7;
+    }
+
+  /* Panel Facebook */
+  .monitor .monitor-panel-face{
+    overflow: hidden;
+  }
+    .monitor .monitor-panel-face .lupa{
+      color: #BDC3C7;
+      font-size: 16px;
+      padding-right: 5px;
+    }
+    .monitor .monitor-panel-face .media{
+      background: #4B77BE;
+      margin: 15px 0;
+      padding: 10px 10px;
+    }
+    .monitor .monitor-panel-face .media:nth-child(odd){
+      background: #4183D7;
+    }
+    .monitor .monitor-panel-face .media h4{
+      color: #fff;
+      font-weight: bold;
+    }
+    .monitor .monitor-panel-face .media p{
+      color: #fefefe;
+    }
+    .monitor .monitor-panel-face .media .pull-right{
+      position: relative;
+      top: 15px;
+    }
+    .monitor .monitor-panel-face .media .pull-right .details-flat{
+      position: relative;
+      vertical-align: top;
+      width: 60px;
+      height: 35px;
+      padding: 0;
+      font-size: 12px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      background: #ecf0f1;
+      border: 0;
+      border-bottom: 2px solid #bdc3c7;
+      cursor: pointer;
+      -webkit-box-shadow: inset 0 -2px #bdc3c7;
+      box-shadow: inset 0 -2px #bdc3c7;
+    }
+    .monitor .monitor-panel-face .media .pull-right .details-flat:active {
+      top: 1px;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    .monitor .monitor-panel-face .media .pull-right .details-flat .glyphicon{
+      color: #7f8c8d;
+      font-size: 18px;
+    }
+    .monitor .monitor-panel-face .media .date{
+      color: #C5EFF7;
+    }
+
+  .monitor .pic{
+    width:110px;
+    margin: 20px auto;
+  }
+  .monitor .img-circle{
+    background: #fff;
+    border: 6px solid #fff;
+  }
+  .monitor .twitter{
+    background: transparent url('../img/01_twitter_64.png');
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+  }
+  .monitor .facebook{
+    background: transparent url('../img/01_facebook_64.png');
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+  }
+
+.monitor-details{
+  background: #bdc3c7;
+  min-height: 300px;
+  overflow: hidden;
+
+}
+  .monitor-details .text-center{
+    color: #fff;
+    font-weight: bold;
+  }
+  .monitor-details .details{
+    background: #ecf0f1;
+    height: 100%;
+    border-bottom: 3px solid #95a5a6;
+    overflow: hidden;
+  }
+  .monitor-details .media{
+    padding: 5px 0;
+  }
+    .monitor-details .media .media-heading{
+      color: #95a5a6;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+    .monitor-details .media p{
+      color: #BFBFBF;
+    }
+    .monitor-details .media .date{
+      color: #BFBFBF;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: -1px;
+    }
+
 /* Modal */
 
 .modal-header{
@@ -1005,4 +1186,18 @@ h1, h2, h3, h4, h5{
 @-webkit-keyframes slideInRight {
     from    { -webkit-transform:translateX(200%); }
     to      { -webkit-transform: translateX(0); }
+}
+
+/* Filters */
+
+.animate-enter, .animate-leave {
+  transition: 500ms ease-in all;
+  position: relative;
+  display: block;
+}
+.animate-enter.animate-enter-active, .animate-leave {
+  left: 0;
+}
+.animate-leave.animate-leave-active, .animate-enter {
+  left: 500px;
 }

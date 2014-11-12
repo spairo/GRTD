@@ -1,16 +1,16 @@
 <?php
+
+	// Converts XML content to JSON
+
 	session_start();
 	header('Content-type: application/json');
 
-	$ws = new SoapClient('http://148.244.88.197/summerhouston/supervisor/webservice1.asmx?WSDL');
-
-	$opcion = (isset($_POST['op'])) ? $_POST['op'] : $_GET['op'];
-
 	// Public 148.244.88.197
 	// Private 172.18.53.180
-	// converts XML content to JSON
-	// receives the URL address of the XML file. Returns a string with the JSON object
 
+	$ws = new SoapClient('http://172.18.53.180/summerhouston/supervisor/webservice1.asmx?WSDL');
+
+	$opcion = (isset($_POST['op'])) ? $_POST['op'] : $_GET['op'];
 
 	switch ($opcion) {
 
@@ -63,13 +63,8 @@
 			//echo $arrjson;
 
 			//echo XMLtoJSON($res);
-
-
 			$xml = simplexml_load_string($res);
-
 			echo json_encode($xml, JSON_PRETTY_PRINT), "\n";
-
-
 		break;
 
 		case 'datosCliente':
@@ -80,6 +75,32 @@
 			);
 			$res = $ws->datosCliente($a);
 			echo $res->datosClienteResult;
+		break;
+
+		case 'getDescartar':
+			$a = array(
+				'nmsgid' => $_POST['nmsgid'],
+				'filter' => $_POST['filter'],
+				'cBuscar' => $_POST['cBuscar']
+			);
+			$res = $ws->getDescartar($a);
+			echo $res->getDescartarResult;
+		break;
+
+		case 'getHistorialCaso':
+			$a = array('caseID' => $_POST['caseID']);
+			$res = $ws->getHistorialCaso ($a);
+			echo $res->getHistorialCasoResult ;
+		break;
+
+		case 'getDescartarFB':
+			$a = array(
+				'idSt' => $_POST['idSt'],
+				'nFil' => $_POST['nFil'],
+				'cBuscar' => $_POST['cBuscar']
+			);
+			$res = $ws->getDescartarFB($a);
+			echo $res->getDescartarFBResult;
 		break;
 
 		default:

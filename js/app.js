@@ -72,12 +72,10 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
     $interval(function(){
 
-        $scope.grid = { op : 'grtd', cUmbral : '1800' };
-
         $http({
            method : 'POST',
            url : 'api/rest.php',
-           data : $.param($scope.grid),
+           data : $.param(  $scope.grid = { op : 'grtd', cUmbral : '1800' }),
            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .success(function(data, status){
@@ -150,20 +148,16 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
     $interval(function(){
 
-      $scope.data = { op : 'getAgentesEstado'};
-
       $http({
          method : 'POST',
          url : 'api/rest.php',
-         data : $.param($scope.data),
+         data : $.param($scope.data = { op : 'getAgentesEstado'}),
          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
       })
       .success(function(data, status){
-
           $scope.loading = false;
           $scope.users = data;
           console.info("All Users >>>", status);
-
       })
       .error(function(data, status){
           console.error("All Users >>>", status, "Oops!");
@@ -180,12 +174,10 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
       $interval(function(){
 
-        $scope.stockpile = { op: "grtdArea", cUmbral: "1800", skill: "1" };
-
         $http({
            method : 'POST',
            url : 'api/rest.php',
-           data : $.param($scope.stockpile),
+           data : $.param(scope.stockpile = { op: "grtdArea", cUmbral: "1800", skill: "1" }),
            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .success(function(data, status){
@@ -252,12 +244,10 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
       $interval(function(){
 
-        $scope.atc = { op: "grtdArea", cUmbral: "1800", skill: "2" };
-
         $http({
            method : 'POST',
            url : 'api/rest.php',
-           data : $.param($scope.atc),
+           data : $.param(  $scope.atc = { op: "grtdArea", cUmbral: "1800", skill: "2" }),
            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .success(function(data, status){
@@ -321,17 +311,16 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
   Grtdapp.controller('MarketingCtrl', function($scope, $http, $interval, LoginService){
 
     $scope.load = true;
+
     //get service
     $scope.status = LoginService;
 
       $interval(function(){
 
-        $scope.marketing = { op: "grtdArea", cUmbral: "1800", skill: "3" };
-
         $http({
            method : 'POST',
            url : 'api/rest.php',
-           data : $.param($scope.marketing),
+           data : $.param($scope.marketing = { op: "grtdArea", cUmbral: "1800", skill: "3" }),
            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
         })
         .success(function(data, status){
@@ -455,7 +444,6 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
     $scope.findcases = function(){
 
-        alert(a);
         //Get History
 
         $http({
@@ -522,6 +510,87 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   });
 
+  // Monitor Controller
+
+  Grtdapp.controller('MonitorCtrl', function($scope, $http, $interval){
+
+
+    $scope.Alltwitter = function(){
+
+      $interval(function(){
+
+          $http({
+             method : 'POST',
+             url : 'api/rest.php',
+             data : $.param($scope.AllTwitter =  { op: 'getDescartar', cBuscar: '0', filter: '0', nmsgid: '0' }),
+             headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+          })
+          .success(function(data){
+
+            console.info("All Twitter Monitor >>>", status);
+            $scope.monitors = data;
+            $scope.findcaseT = true;
+
+          })
+          .error(function(data, status){
+            console.error("All Twitter Monitor", status, "Oops!");
+          })
+
+      },3500)
+
+    };
+
+    //Twitter Details
+
+    $scope.getCaseHistory = function(){
+
+       //$interval(function(){
+
+           $http({
+              method : 'POST',
+              url : 'api/rest.php',
+              data : $.param($scope.AllTwitter =  { op: 'getHistorialCaso', cas: '2877' }),
+              headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+           })
+           .success(function(data){
+             console.info("get Case History >>>", status);
+
+             $scope.getcasesh = data;
+             alert(data);
+
+           })
+           .error(function(data, status){
+             console.error("get Case History", status, "Oops!");
+           })
+
+       //},3500)
+
+    };
+
+    $scope.Allfacebook = function(){
+
+        alert("foo");
+
+        $http({
+           method : 'POST',
+           url : 'api/rest.php',
+           data : $.param($scope.AllF =  { op: 'getDescartarFB', idSt: '0', nFil: '0', cBuscar: '0' }),
+           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(data){
+
+          console.info("get Cases Facebook History >>>", status);
+          $scope.GetFCases = data;
+          $scope.findcaseF = true;
+
+        })
+        .error(function(data, status){
+          console.error("get Case Facebook History", status, "Oops!");
+        })
+    }
+
+  });
+
   // Settings Controller
 
   Grtdapp.controller('SettingsCtrl', function($scope, $http){
@@ -563,9 +632,11 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
     $scope.status = LoginService;
   });
 
+
   //Factories
 
-  //Login
   Grtdapp.factory('LoginService',function(){
     return { nodo:"", name:""};
   });
+
+  // Directives
