@@ -1,6 +1,6 @@
 'use strict';
 
-var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap', 'FBAngular']);
+var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap']);
 
   Grtdapp.config(function($stateProvider, $urlRouterProvider){
 
@@ -51,18 +51,7 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Main Controller
 
-  Grtdapp.controller('MainCtrl', function($scope, Fullscreen){
-
-     $scope.goFullscreen = function(){
-
-        if(Fullscreen.isEnabled()){
-          Fullscreen.cancel();
-        }
-        else{
-          Fullscreen.all();
-        }
-     };
-  });
+  Grtdapp.controller('MainCtrl', function($scope){});
 
   // Dashboard Main Controller
 
@@ -379,7 +368,7 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   });
 
-  // Modal Controller
+  // Modal Login Controller
 
   Grtdapp.controller('ModalCtrl', function($scope, $modal){
 
@@ -387,19 +376,13 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
           var modalInstance = $modal.open({
             templateUrl: 'myModalLogin.html',
-            controller: ModalInstanceCtrl,
+            controller: ModalLoginInstanceCtrl,
             size: size,
             backdrop: 'static',
             resolve: {}
           });
       };
   });
-
-  var ModalInstanceCtrl = function ($scope, $modalInstance) {
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
-  };
 
   // Login Controller
 
@@ -512,84 +495,248 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   // Monitor Controller
 
-  Grtdapp.controller('MonitorCtrl', function($scope, $http, $interval){
-
+  Grtdapp.controller('MonitorCtrl', function($scope, $http, $interval, $modal, DetailTwitterService){
 
     $scope.Alltwitter = function(){
 
-      $interval(function(){
+      $scope.ShowTab = 1;
+      $scope.loading = true;
 
+      $interval(function(){
           $http({
              method : 'POST',
              url : 'api/rest.php',
              data : $.param($scope.AllTwitter =  { op: 'getDescartar', cBuscar: '0', filter: '0', nmsgid: '0' }),
              headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
           })
-          .success(function(data){
-
+          .success(function(data, status){
             console.info("All Twitter Monitor >>>", status);
             $scope.monitors = data;
-            $scope.findcaseT = true;
-
+            $scope.loading = false;
           })
           .error(function(data, status){
             console.error("All Twitter Monitor", status, "Oops!");
           })
-
       },3500)
+    };
 
+    $scope.TwitterAssigned = function(){
+      $scope.loading = true;
+      $interval(function(){
+          $http({
+             method : 'POST',
+             url : 'api/rest.php',
+             data : $.param($scope.AllTwitter =  { op: 'getDescartar', cBuscar: '0', filter: '1', nmsgid: '0' }),
+             headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+          })
+          .success(function(data, status){
+            console.info("Twitter Assigned Monitor >>>", status);
+            $scope.TAssigned = data;
+            $scope.loading = false;
+          })
+          .error(function(data, status){
+            console.error("Twitter Assigned Monitor", status, "Oops!");
+          })
+      },3500)
+    };
+
+    $scope.TwitterByAssigning = function(){
+      $scope.loading = true;
+      $interval(function(){
+        $http({
+           method : 'POST',
+           url : 'api/rest.php',
+           data : $.param($scope.AllTwitter =  { op: 'getDescartar', cBuscar: '0', filter: '2', nmsgid: '0' }),
+           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(data, status){
+          console.info("Twitter by assigning >>>", status);
+          $scope.TByAssigning = data;
+          $scope.loading = false;
+        })
+        .error(function(data, status){
+          console.error("Twitter by assigning", status, "Oops!");
+        })
+      },3500)
+    };
+
+    $scope.TwitterDiscarded = function(){
+      $scope.loading = true;
+      $interval(function(){
+        $http({
+           method : 'POST',
+           url : 'api/rest.php',
+           data : $.param($scope.AllTwitter =  { op: 'getDescartar', cBuscar: '0', filter: '3', nmsgid: '0' }),
+           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(data, status){
+          console.info("Twitter Discarded >>>", status);
+          $scope.TDiscarded = data;
+          $scope.loading = false;
+        })
+        .error(function(data, status){
+          console.error("Twitter Discarded", status, "Oops!");
+        })
+      },3500)
     };
 
     //Twitter Details
 
-    $scope.getCaseHistory = function(){
+    $scope.senddetailsT = function(){
 
-       //$interval(function(){
+       $http({
+          method : 'POST',
+          url : 'api/rest.php',
+          data : $.param($scope.getdetailsT = { op: 'getHistorialCaso', caseID: '3180' }),
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+       })
+       .success(function(data, status){
+          console.info("get Details Twitter >>>", status);
+          var getDT = data;
+
+          //Send Service Details T
+          $scope.DatailT = DetailTwitterService;
+          $scope.DatailT.details = getDT;
+       })
+       .error(function(data, status){
+          console.error("Get Details Twitter", status, "Oops!");
+       })
+
+       /*
+       $interval(function(){
 
            $http({
               method : 'POST',
               url : 'api/rest.php',
-              data : $.param($scope.AllTwitter =  { op: 'getHistorialCaso', cas: '2877' }),
+              data : $.param($scope.AllDetailsTwitter =  { op: 'getHistorialCaso', cas: '1465' }),
               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
            })
            .success(function(data){
-             console.info("get Case History >>>", status);
-
-             $scope.getcasesh = data;
-             alert(data);
-
+              console.info("get Case History >>>", status);
+              $scope.Tgetcases = data;
            })
            .error(function(data, status){
-             console.error("get Case History", status, "Oops!");
+              console.error("get Case History", status, "Oops!");
            })
 
-       //},3500)
-
+       },3500)*/
     };
+
+    //Facebook Monitor
 
     $scope.Allfacebook = function(){
 
-        alert("foo");
+        $scope.ShowTab = 2;
+        $scope.loading = true;
 
-        $http({
-           method : 'POST',
-           url : 'api/rest.php',
-           data : $.param($scope.AllF =  { op: 'getDescartarFB', idSt: '0', nFil: '0', cBuscar: '0' }),
-           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-        })
-        .success(function(data){
+        $interval(function(){
+            $http({
+               method : 'POST',
+               url : 'api/rest.php',
+               data : $.param($scope.AllF = { op: 'getDescartarFB', idSt: '0', nFil: '0', cBuscar: '0' }),
+               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .success(function(data, status){
+              console.info("All facebook >>>", status);
+              $scope.allFace = data;
+              $scope.loading = false;
+            })
+            .error(function(data, status){
+              console.error("All facebook", status, "Oops!");
+            })
+        },3500)
+    };
 
-          console.info("get Cases Facebook History >>>", status);
-          $scope.GetFCases = data;
-          $scope.findcaseF = true;
+    $scope.facebookAssigned = function(){
+        $scope.loading = true;
+        $interval(function(){
+            $http({
+               method : 'POST',
+               url : 'api/rest.php',
+               data : $.param($scope.AllF = { op: 'getDescartarFB', idSt: '0', nFil: '1', cBuscar: '0' }),
+               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .success(function(data, status){
+              console.info("facebook Assigned Monitor >>>", status);
+              $scope.FAssigned = data;
+              $scope.loading = false;
+            })
+            .error(function(data, status){
+              console.error("facebook Assigned Monitor", status, "Oops!");
+            })
+        },3500)
+    };
 
-        })
-        .error(function(data, status){
-          console.error("get Case Facebook History", status, "Oops!");
-        })
-    }
+    $scope.facebookByAssigning = function(){
+        $scope.loading = true;
+        $interval(function(){
+            $http({
+               method : 'POST',
+               url : 'api/rest.php',
+               data : $.param($scope.AllF = { op: 'getDescartarFB', idSt: '0', nFil: '2', cBuscar: '0' }),
+               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .success(function(data, status){
+              console.info("facebook by assigning >>>", status);
+              $scope.FByAssigning = data;
+              $scope.loading = false;
+            })
+            .error(function(data, status){
+              console.error("facebook by assigning", status, "Oops!");
+            })
+        },3500)
+    };
 
+    $scope.facebookDiscarded = function(){
+        $interval(function(){
+            $http({
+               method : 'POST',
+               url : 'api/rest.php',
+               data : $.param($scope.AllF = { op: 'getDescartarFB', idSt: '0', nFil: '3', cBuscar: '0' }),
+               headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .success(function(data, status){
+              console.info("facebook Discarded >>>", status);
+              $scope.FDiscarded = data;
+              $scope.loading = false;
+            })
+            .error(function(data, status){
+              console.error("facebook Discarded", status, "Oops!");
+            })
+        },3500)
+    };
+
+    // Modal Twitter / Facebook Details
+
+    $scope.openDetails = function (size, DetailTwitterService) {
+        var modalInstance = $modal.open({
+          templateUrl: 'ModalDetails.html',
+          controller: ModalDetailsInstanceCtrl,
+          size: size,
+          backdrop: 'static',
+          resolve: {
+
+          }
+        });
+    };
   });
+
+  //Modal Details Controller
+
+  /*Grtdapp.controller('ModalCtrl', function($scope, $modal){
+
+      $scope.openDetails = function (size) {
+
+          var modalInstance = $modal.open({
+            templateUrl: 'ModalDetails.html',
+            controller: ModalLoginInstanceCtrl,
+            size: size,
+            backdrop: 'static',
+            resolve: {}
+          });
+      };
+  });
+  */
 
   // Settings Controller
 
@@ -621,22 +768,38 @@ var Grtdapp = angular.module('Grtdapp', ['ui.router', 'ngAnimate', 'ui.bootstrap
 
   Grtdapp.controller('NavbarCtrl', function($scope, LoginService){
       $scope.navbarCollapsed = true;
-      //get service
       $scope.status = LoginService;
   });
 
   // MultiDash Controller
 
   Grtdapp.controller('MultiDashCtrl', function($scope, LoginService){
-    //get service
     $scope.status = LoginService;
   });
 
+  // Modals Controllers / Features
+
+  var ModalLoginInstanceCtrl = function ($scope, $modalInstance){
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+  };
+
+  var ModalDetailsInstanceCtrl = function ($scope, $modalInstance, DetailTwitterService){
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+    $scope.DT = DetailTwitterService;
+  };
 
   //Factories
 
   Grtdapp.factory('LoginService',function(){
     return { nodo:"", name:""};
+  });
+
+  Grtdapp.factory('DetailTwitterService', function(){
+    return { details:"" };
   });
 
   // Directives

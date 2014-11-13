@@ -15,90 +15,264 @@
     <div class="col-md-4"></div>
   </div>
 
-  <div class="row">
-    <div ng-show="findcaseT == true" class="monitor-panel col-md-12">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-        </div>
-      </div>
-      <div ng-animate="'animate'" ng-repeat="monitor in monitors | filter:search" class="media">
-        <a class="pull-left" href="#">
-          <img class="img-circle media-object" src="{{monitor.im}}" alt="Case">
-        </a>
-        <a class="pull-right">
-          <div class="btn-group">
-            <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
-          </div>
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading">@{{monitor.na}} <span ng-if="monitor.stG == '1'" class="glyphicon glyphicon-ok-sign"></span><span ng-if="monitor.stG == '2'" class="glyphicon glyphicon-question-sign"></span></h4>
-          <p>{{monitor.tx}}</p>
-          <span class="date">{{monitor.fe}}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div ng-show="findcaseF == true" class="monitor-panel-face col-md-12">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Buscar" ng-model="search.fb">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-        </div>
-      </div>
-      <div ng-animate="'animate'" ng-repeat="fcase in GetFCases | filter:search" class="media">
-        <a class="pull-left" href="#">
-          <img class="img-thumbnails media-object" src="{{fcase.fh}}" alt="Case">
-        </a>
-        <a class="pull-right">
-          <div class="btn-group">
-            <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
-          </div>
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading">{{fcase.fb}} <span ng-if="fcase.ff == '1'" class="glyphicon glyphicon-ok-sign"></span><span ng-if="fcase.ff == '2'" class="glyphicon glyphicon-question-sign"></span></h4>
-          <p>{{fcase.fd}}</p>
-          <span class="date">{{fcase.fe}}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-  <!--
-  <div class="col-md-3 monitor-details">
-    <h4 class="text-center help-block">Detalles</h4>
-    <div ng-repeat="getcaseh in getcasesh" class="details">
-      <div class="media">
-        <div class="pull-left">
-          <img class="img-circle media-object" src="{{getcaseh.profileimg}}" alt="Case">
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">@{{getcaseh}}</h4>
-          <p>{{getcaseh}}</p>
-          <span class="date">{{getcaseh}}</span>
-        </div>
-      </div>
-    </div>
-  </div>-->
-
-  <!--
-  <tabset justified="true">
+  <tabset ng-show= "ShowTab == 1" justified="true">
     <tab heading="Todos">
+      <div ng-show="Alltwitter" class="row">
+        <div class="monitor-panel col-md-12">
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="monitor in monitors | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="{{monitor.im}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="openDetails(lg); senddetailsT();" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">@{{monitor.na}} <span ng-if="monitor.stG == '1'" class="glyphicon glyphicon-ok-sign"></span><span ng-if="monitor.stG == '2'" class="glyphicon glyphicon-question-sign"></span></h4>
+              <p>{{monitor.tx}}</p>
+              <span class="date">{{monitor.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </tab>
-    <tab heading="Asignados">
-      <div class="well-sm well"></div>
+    <tab heading="Asignados" ng-click="TwitterAssigned()">
+      <div ng-show="TwitterAssigned" class="row">
+        <div class="monitor-panel col-md-12">
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="assigned in TAssigned | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="{{assigned.im}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">@{{assigned.na}} <span ng-if="assigned.stG == '1'" class="glyphicon glyphicon-ok-sign"></span><span ng-if="assigned.stG == '2'" class="glyphicon glyphicon-question-sign"></span></h4>
+              <p>{{assigned.tx}}</p>
+              <span class="date">{{assigned.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </tab>
-    <tab heading="Por asignar">Por Asignar</tab>
-    <tab heading="Descartados">Destacartados</tab>
+    <tab heading="Por Asignar" ng-click="TwitterByAssigning()">
+      <div ng-show="TwitterByAssigning" class="row">
+        <div class="monitor-panel col-md-12">
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="byassigning in TByAssigning | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="{{byassigning.im}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">@{{byassigning.na}} <span ng-if="byassigning.stG == '1'" class="glyphicon glyphicon-ok-sign"></span><span ng-if="byassigning.stG == '2'" class="glyphicon glyphicon-question-sign"></span></h4>
+              <p>{{byassigning.tx}}</p>
+              <span class="date">{{byassigning.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Descartados" ng-click="TwitterDiscarded()">
+      <div ng-show="TwitterDiscarded" class="row">
+        <div class="monitor-panel col-md-12">
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="Discarded in TDiscarded | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="{{Discarded.im}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">@{{Discarded.na}} <span ng-if="Discarded.stG == '1'" class="glyphicon glyphicon-ok-sign"></span><span ng-if="Discarded.stG == '2'" class="glyphicon glyphicon-question-sign"></span></h4>
+              <p>{{Discarded.tx}}</p>
+              <span class="date">{{Discarded.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
   </tabset>
-  -->
+  <!-- F Tabs -->
+  <tabset ng-show= "ShowTab == 2" justified="true">
+    <tab heading="Todos">
+      <div ng-show="Allfacebook" class="row">
+        <div class="monitor-panel-face col-md-12" ng-cloak>
+
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.fb">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="face in allFace | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-thumbnails media-object" src="{{face.fh}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading">{{face.fb}}
+                <span ng-if="face.ff == '5'" class="glyphicon glyphicon-ok-sign"></span>
+                <span ng-if="face.ff == '2'" class="glyphicon glyphicon-question-sign"></span>
+                <span ng-if="face.ff == '8'" class="glyphicon glyphicon-remove"></span>
+              </h4>
+              <p>{{face.fd}}</p>
+              <span class="date">{{face.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Asignados" ng-click="facebookAssigned()">
+      <div ng-show="facebookAssigned" class="row">
+        <div class="monitor-panel col-md-12">
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="assigned in FAssigned | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="{{assigned.fh}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><span ng-if="assigned.ff == '5'" class="glyphicon glyphicon-ok"></span> {{assigned.fb}}</h4>
+              <p>{{assigned.fd}}</p>
+              <span class="date">{{assigned.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Por Asignar" ng-click="facebookByAssigning()">
+      <div ng-show="facebookByAssigning" class="row">
+        <div class="monitor-panel col-md-12">
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="byassigning in FByAssigning | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="{{byassigning.fh}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><span ng-if="byassigning.ff == '2'" class="glyphicon glyphicon-question-sign"></span> {{byassigning.fb}}</h4>
+              <p>{{byassigning.fd}}</p>
+              <span class="date">{{byassigning.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Descartados" ng-click="facebookDiscarded()">
+      <div ng-show="facebookDiscarded" class="row">
+        <div class="monitor-panel col-md-12">
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="search.na">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+          </div>
+          <div class="spinner-64" ng-show="loading"></div>
+          <div ng-animate="'animate'" ng-repeat="Discarded in FDiscarded | filter:search" class="media">
+            <a class="pull-left" href="#">
+              <img class="img-circle media-object" src="{{Discarded.fh}}" alt="Case">
+            </a>
+            <a class="pull-right">
+              <div class="btn-group">
+                <button type="button" ng-click="getCaseHistory()" class="details-flat"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><span ng-if="Discarded.ff == '8'" class="glyphicon glyphicon-remove"></span> {{Discarded.fb}}</h4>
+              <p>{{Discarded.fd}}</p>
+              <span class="date">{{Discarded.fe}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+  <script type="text/ng-template" id="ModalDetails.html">
+    <div class="modal-header">
+      <button type="button" class="close" ng-click="cancel()">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">Detalles</h4>
+    </div>
+    <div class="modal-body">
+      <div class="monitor-details">
+        <div class="details">
+
+          <div class="media" ng-repeat="DT in DT.details>
+            <div class="pull-left">
+              <img class="img-circle media-object" src="{{DT.profileimg}}" alt="Details">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{DT.userName}}</h4>
+              <p>{{DT.hystorial}}</p>
+              <span class="date">{{DT.dateCreated}}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </script>
 </div>

@@ -89,8 +89,8 @@
 
 		case 'getHistorialCaso':
 			$a = array('caseID' => $_POST['caseID']);
-			$res = $ws->getHistorialCaso ($a);
-			echo $res->getHistorialCasoResult ;
+			$res = $ws->getHistorialCaso($a);
+			echo $res->getHistorialCasoResult;
 		break;
 
 		case 'getDescartarFB':
