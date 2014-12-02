@@ -584,11 +584,38 @@ h1, h2, h3, h4, h5{
 
 /* Cases Page */
 
+.cases-module{
+
+}
+  .cases-module .btn-back{
+    position: relative;
+    vertical-align: top;
+    width: 50px;
+    height: 30px
+    padding: 0px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #95a5a6;
+    border: 0;
+    border-bottom: 2px solid #7f8c8d;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #7f8c8d;
+    box-shadow: inset 0 -2px #7f8c8d;
+  }
+  .cases-module .btn-back:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
 .case-search{
   min-height: 50px;
   background: #ecf0f1;
   overflow: hidden;
-  padding: 15px;
+  padding: 20px;
   margin: 10px 0px;
 }
   .case-search .twitter{
@@ -609,15 +636,37 @@ h1, h2, h3, h4, h5{
   min-height: 150px;
   background: #EEF1F2;
 }
-  .info-profile h5{
-    color: #3B3B3B;
+  .info-profile .avatar-full{
+    position: relative;
+    display: block;
+    height: 102px;
+    width: 102px;
+    margin: 10px auto;
+    border: 5px solid #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../img/default-avatar.png');
+    border-radius: 50%;
+    background-size: 102px auto;
+    box-shadow: 0px 1px 0px #FFF, 0px 1px 3px rgba(3, 3, 3, 0.2) inset;
+  }
+  .info-profile .name{
+    color: #2c3e50;
     text-align: center;
     font-family: 'AvenirPro', sans-serif;
     font-weight: bold;
+    font-size: 21px;
+  }
+  .info-profile .arroba{
+    color: #2c3e50;
+    text-align: center;
+    font-family: 'AvenirPro', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
   }
   .info-profile .overview{
     margin: 5px 0;
-    color: #A6A8A9;
+    color: #95a5a6;
     text-align: center;
     font-style: italic;
     font-family: 'AvenirPro', sans-serif;
@@ -642,11 +691,11 @@ h1, h2, h3, h4, h5{
     font-size: 10px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #9E9E9E;
+    color: #2c3e50;
   }
     .info-profile .socialphy span{
       display: block;
-      color: #605E58;
+      color: #34495e;
       font-size: 28px;
       font-weight: bold;
       letter-spacing: 0px;
@@ -660,10 +709,7 @@ h1, h2, h3, h4, h5{
   }
   .panel-cases .media{
     padding: 10px 0 0 0;
-    border-bottom: 5px #EEF1F2 solid;
-  }
-  .panel-cases .media:nth-child(odd) {
-    border-bottom: 5px #EEF1F2 solid;
+    background: #EEF1F2;
   }
   .panel-cases .media a{
     text-decoration: none;
@@ -682,6 +728,31 @@ h1, h2, h3, h4, h5{
   .panel-cases .media p{
     color: #bdc3c7;
   }
+  .panel-cases .btn-case{
+    position: relative;
+    vertical-align: top;
+    width: 50px;
+    height: 30px
+    padding: 0px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #95a5a6;
+    border: 0;
+    border-bottom: 2px solid #7f8c8d;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #7f8c8d;
+    box-shadow: inset 0 -2px #7f8c8d;
+  }
+  .panel-cases .btn-case:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+
 
 .panel-about{
   min-height: 150px;
@@ -920,6 +991,51 @@ h1, h2, h3, h4, h5{
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+/* Emails Scaled */
+
+.scaled{}
+
+  .scaled h1{
+    text-align: center;
+  }
+  .scaled .list-inline{
+    font-weight: bold;
+    color: #bdc3c7;
+    font-size: 10px;
+  }
+  .scaled th{
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .scaled td{
+    color: #7f8c8d;
+    font-size: 13px;
+    font-weight: normal;
+  }
+  .scaled .verde{
+    background: #27ae60;
+    width: 25px;
+    height: 25px;
+  }
+  .scaled .rojo{
+    background: #e74c3c;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+  }
+  .scaled .azul{
+    background: #3498db;
+    width: 25px;
+    height: 25px;
+  }
+  .scaled .amarillo{
+    background: #f1c40f;
+    width: 25px;
+    height: 25px;
+  }
+
 
 /* Animates */
 

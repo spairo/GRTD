@@ -55,16 +55,8 @@
 		case 'getInfoTwitter':
 			$a = array('twitterUserID' => $_POST['twitterUserID']);
 			$res = $ws->getInfoTwitter($a);
-
-			//echo $data = json_encode($res);
-
-			//$strjson = XMLtoJSON($res);
-			//$arrjson = json_decode($strjson, true);
-			//echo $arrjson;
-
-			//echo XMLtoJSON($res);
-			$xml = simplexml_load_string($res);
-			echo json_encode($xml, JSON_PRETTY_PRINT), "\n";
+			$obj = simplexml_load_string($res->getInfoTwitterResult->any);
+			echo json_encode($obj);
 		break;
 
 		case 'datosCliente':
@@ -75,6 +67,24 @@
 			);
 			$res = $ws->datosCliente($a);
 			echo $res->datosClienteResult;
+		break;
+
+		case 'buscaUsuarioFb':
+			$a = array(
+				'cDn' => $_POST['cDn'],
+				'filtro' => $_POST['filtro'],
+				'numUserId' => $_POST['numUserId'],
+				'tMail' => $_POST['tMail'],
+				'userId' => $_POST['userId']
+			);
+			$res = $ws->buscaUsuarioFb($a);
+			echo $res->buscaUsuarioFbResult;
+		break;
+
+		case 'datosClienteFb':
+			$a = array('nIdUsuario' => $POST['nIdUsuario']);
+			$res = $ws->datosClienteFb($a);
+			echo $res->datosClienteFbResult;
 		break;
 
 		case 'getDescartar':
@@ -103,8 +113,18 @@
 			echo $res->getDescartarFBResult;
 		break;
 
+		case 'getMailEsc':
+			$a = array(
+				'mf1' => $_POST['mf1'],
+				'mf2' => $_POST['mf2'],
+				'mf3' => $_POST['mf3']
+			);
+			$res = $ws->getMailEsc($a);
+			echo $res->getMailEscResult;
+		break;
+
 		default:
-			echo 'No hay opciones disponibles';
+			echo 'Oopps!';
 		break;
 	}
 
