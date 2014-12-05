@@ -8,7 +8,7 @@
 	// Public 148.244.88.197
 	// Private 172.18.53.180
 
-	$ws = new SoapClient('http://172.18.53.180/summerhouston/supervisor/webservice1.asmx?WSDL');
+	$ws = new SoapClient('172.18.53.180/summerhouston/supervisor/webservice1.asmx?WSDL');
 
 	$opcion = (isset($_POST['op'])) ? $_POST['op'] : $_GET['op'];
 
