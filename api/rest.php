@@ -69,24 +69,6 @@
 			echo $res->datosClienteResult;
 		break;
 
-		case 'buscaUsuarioFb':
-			$a = array(
-				'cDn' => $_POST['cDn'],
-				'filtro' => $_POST['filtro'],
-				'numUserId' => $_POST['numUserId'],
-				'tMail' => $_POST['tMail'],
-				'userId' => $_POST['userId']
-			);
-			$res = $ws->buscaUsuarioFb($a);
-			echo $res->buscaUsuarioFbResult;
-		break;
-
-		case 'datosClienteFb':
-			$a = array('nIdUsuario' => $POST['nIdUsuario']);
-			$res = $ws->datosClienteFb($a);
-			echo $res->datosClienteFbResult;
-		break;
-
 		case 'getDescartar':
 			$a = array(
 				'nmsgid' => $_POST['nmsgid'],
@@ -103,6 +85,18 @@
 			echo $res->getHistorialCasoResult;
 		break;
 
+		case 'buscaUsuarioFb':
+			$a = array(
+				'cDn' => $_POST['cDn'],
+				'filtro' => $_POST['filtro'],
+				'numUserId' => $_POST['numUserId'],
+				'tMail' => $_POST['tMail'],
+				'userId' => $_POST['userId']
+			);
+			$res = $ws->buscaUsuarioFb($a);
+			echo $res->buscaUsuarioFbResult;
+		break;
+
 		case 'getDescartarFB':
 			$a = array(
 				'idSt' => $_POST['idSt'],
@@ -113,6 +107,18 @@
 			echo $res->getDescartarFBResult;
 		break;
 
+		case 'datosClienteFb':
+			$a = array('nIdUsuario' => $_POST['nIdUsuario']);
+			$res = $ws->datosClienteFb($a);
+			echo $res->datosClienteFbResult;
+		break;
+
+		case 'getHistorialCasoFb':
+			$a = array('caseID' => $_POST['caseID']);
+			$res = $ws->getHistorialCasoFb($a);
+			echo $res->getHistorialCasoFbResult;
+		break;
+
 		case 'getMailEsc':
 			$a = array(
 				'mf1' => $_POST['mf1'],
@@ -121,6 +127,18 @@
 			);
 			$res = $ws->getMailEsc($a);
 			echo $res->getMailEscResult;
+		break;
+
+		case 'updateConfiguracion':
+			$a = array(
+				'cEspera' => $_POST['cEspera'],
+				'cNS' => $_POST['cNS'],
+				'cTME' => $_POST['cTME'],
+				'cTMO' => $_POST['cTMO'],
+				'cUmbral' => $_POST['cUmbral'],
+			);
+			$res = $ws->updateConfiguracion($a);
+			echo $res->updateConfiguracionResult;
 		break;
 
 		default:

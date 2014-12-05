@@ -20,6 +20,7 @@ body {
     padding: 0;
 }
 
+
 /* Fonts */
 
 @font-face {
@@ -109,6 +110,11 @@ h1, h2, h3, h4, h5{
 
 /* General */
 
+a{
+  color: #ccc;
+  font-weight: bold;
+}
+
 .btn-grtd{
   vertical-align: top;
   padding: 0;
@@ -180,9 +186,17 @@ h1, h2, h3, h4, h5{
 }
   .header .navbar-brand{
     color: #fff;
+    font-weight: normal;
   }
+    .header .navbar-brand:active{
+      color: #fff;
+      font-weight: normal;
+      text-decoration: none;
+    }
     .header .navbar-brand:hover{
       color: #fff;
+      font-weight: normal;
+      text-decoration: none;
     }
   .header a{
     font-family: "AvenirPro", sans-serif;
@@ -587,6 +601,13 @@ h1, h2, h3, h4, h5{
 .cases-module{
 
 }
+  .cases-module form{
+    padding-top: 20px;
+  }
+  .cases-module form button{
+    margin: 0px auto;
+    position: relative;
+  }
   .cases-module .btn-back{
     position: relative;
     vertical-align: top;
@@ -623,16 +644,18 @@ h1, h2, h3, h4, h5{
     width: 64px;
     height: 64px;
     margin: 0 auto;
+    border: none;
   }
   .case-search .facebook{
     background: transparent url('../img/facebook_64.png');
     width: 64px;
     height: 64px;
     margin: 0 auto;
+    border: none;
   }
 
 .info-profile{
-  margin-botton: 10px;
+  margin-botton: 8px;
   min-height: 150px;
   background: #EEF1F2;
 }
@@ -658,11 +681,12 @@ h1, h2, h3, h4, h5{
     font-size: 21px;
   }
   .info-profile .arroba{
-    color: #2c3e50;
+    color: #7f8c8d;
     text-align: center;
     font-family: 'AvenirPro', sans-serif;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 16px;
+    font-style: italic;
   }
   .info-profile .overview{
     margin: 5px 0;
@@ -672,15 +696,7 @@ h1, h2, h3, h4, h5{
     font-family: 'AvenirPro', sans-serif;
     font-weight: normal;
     text-transform: capitalize;
-    font-size: 11px;
-  }
-  .info-profile .pic{
-    width:110px;
-    margin: 20px auto;
-  }
-  .info-profile .img-circle{
-    background: #fff;
-    border: 6px solid #fff;
+    font-size: 12px;
   }
   .info-profile .social{
     margin: 20px 0;
@@ -696,7 +712,7 @@ h1, h2, h3, h4, h5{
     .info-profile .socialphy span{
       display: block;
       color: #34495e;
-      font-size: 28px;
+      font-size: 21px;
       font-weight: bold;
       letter-spacing: 0px;
     }
@@ -711,23 +727,23 @@ h1, h2, h3, h4, h5{
     padding: 10px 0 0 0;
     background: #EEF1F2;
   }
-  .panel-cases .media a{
-    text-decoration: none;
-  }
-  .panel-cases .media .id{
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #A6A8A9;
-    font-weight: bold;
-  }
-  .panel-cases .media h4{
-    color: #A6A8A9;
-    font-weight: bold;
-  }
-  .panel-cases .media p{
-    color: #bdc3c7;
-  }
+    .panel-cases .media a{
+      text-decoration: none;
+    }
+    .panel-cases .media .id{
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #34495e;
+      font-weight: bold;
+    }
+    .panel-cases .media h4{
+      color: #34495e;
+      font-weight: bold;
+    }
+    .panel-cases .media p{
+      color: #bdc3c7;
+    }
   .panel-cases .btn-case{
     position: relative;
     vertical-align: top;
@@ -745,19 +761,36 @@ h1, h2, h3, h4, h5{
     -webkit-box-shadow: inset 0 -2px #7f8c8d;
     box-shadow: inset 0 -2px #7f8c8d;
   }
-  .panel-cases .btn-case:active {
-    top: 1px;
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    .panel-cases .btn-case:active {
+      top: 1px;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  .panel-cases small{
+    color: #7f8c8d;
+    font-weight: bold;
   }
-
-
 
 .panel-about{
   min-height: 150px;
 }
   .panel-about h3{
+    font-weight: bold;
+  }
+  .panel-about .error{
+    color: #7f8c8d;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+  }
+  .panel-about .info{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+  }
+  .panel-about .info li{
+    color: #bdc3c7;
     font-weight: bold;
   }
 
@@ -1259,6 +1292,9 @@ h1, h2, h3, h4, h5{
   padding-top:7px;
   width:30px;
   border-radius:50%;
+}
+#status-buttons .cat{
+  color: #ccc;
 }
 #status-buttons .title{
   color: #bdc3c7;

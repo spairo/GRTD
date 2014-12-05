@@ -1,0 +1,172 @@
+<div class="cases-module container" ng-controller="FindCasesCtrl">
+  <div class="row" ng-show="status.nodo == 1">
+    <div class="col-sm-12 well-sm">
+      <div class="btn-group btn-group-justified">
+        <div class="btn-group btn-group-lg">
+          <button type="button" ui-sref="cases" class="btn btn-admin"><span class="glyphicon glyphicon-briefcase"></span> Buscar Casos</button>
+        </div>
+        <div class="btn-group btn-group-lg">
+          <button type="button" ui-sref="monitor" class="btn btn-admin"><span class="glyphicon glyphicon-eye-open"></span> Monitor & Gestión</button>
+        </div>
+        <div class="btn-group btn-group-lg">
+          <button type="button" ui-sref="mails" class="btn btn-admin"><span class="glyphicon glyphicon-envelope"></span> Mails Escalados</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-hide= "panelcases == 1 || panelcasesFb == 1" class="row">
+    <h1 class="text-center">Buscar Casos</h1>
+    <div class="col-sm-4 col-md-4"></div>
+    <div class="col-xs-12 col-sm-4 col-md-4 case-search">
+      <tabset justified="true">
+        <tab heading="Twitter">
+          <form name="myForm" class="form" role="form">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name="userId" ng-model="findcaseT.userId" ng-required="!(findcaseT.userId.length || findcaseT.cDn.length || findcaseT.tMail.length)" placeholder="Usuario">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name="cDn" ng-model="findcaseT.cDn" ng-required="!(findcaseT.userId.length || findcaseT.cDn.length || findcaseT.tMail.length)" placeholder="DN">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name="tMail" ng-model="findcaseT.tMail" ng-required="!(findcaseT.userId.length || findcaseT.cDn.length || findcaseT.tMail.length)" placeholder="Mail">
+            </div>
+            <center>
+              <button type="submit" ng-click="findKaseT();" ng-disabled="!myForm.$valid" class="twitter"></button>
+            </center>
+          </form>
+        </tab>
+        <tab heading="Facebook">
+          <form class="myForm" name="myFormFace" role="form">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name="userId" ng-model="findcaseF.userId" ng-required="!(findcaseF.userId.length || findcaseT.cDn.length || findcaseT.tMail.length)" placeholder="Usuario">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name="cDn" ng-model="findcaseF.cDn" ng-required="!(findcaseF.userId.length || findcaseT.cDn.length || findcaseT.tMail.length)" placeholder="DN">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name="tMail" ng-model="findcaseF.tMail" ng-required="!(findcaseF.userId.length || findcaseT.cDn.length || findcaseT.tMail.length)" placeholder="Mail">
+            </div>
+            <center>
+              <button type="submit" ng-click="findKaseF();" ng-disabled="!myFormFace.$valid" class="facebook"></button>
+            </center>
+          </form>
+        </tab>
+      </tabset>
+    </div>
+    <div class="col-sm-4 col-md-4"></div>
+  </div>
+  <!-- //Search Case-->
+  <div class="row" ng-hide="panelcases == 0">
+    <div class="pull-left">
+      <button class="btn btn-back" ng-click="findCaseReturn()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+      <span class="help-block"></span>
+    </div>
+  </div>
+  <div class="row" ng-hide="panelcasesFb == 0">
+    <div class="pull-left">
+      <button class="btn btn-back" ng-click="findCaseReturn()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+      <span class="help-block"></span>
+    </div>
+  </div>
+  <!-- Twitter -->
+  <div ng-hide= "panelcases == 0" class="row">
+    <div class="col-md-3 info-profile">
+      <div class="avatar-full" style="background-image: url('{{twittinfo.profile_image_url}}') !important;"></div>
+      <div class="name">{{twittinfo.name}}</div>
+      <div class="arroba help-block">@{{twittinfo.screen_name}}</div>
+      <div class="overview">{{twittinfo.description}}</div>
+      <ul class="row social">
+        <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Tweets <span>{{twittinfo.statuses_count}}</span></li>
+        <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Siguiendo <span>{{twittinfo.friends_count}}</span></li>
+        <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Seguidores <span>{{twittinfo.followers_count}}</span></li>
+      </ul>
+    </div>
+    <div class="col-md-6 panel-cases">
+        <div class="media" ng-repeat="hct in HCt">
+          <div class="pull-left">
+            <img class="media-object" src="img/twitter_64.png" alt="Case">
+            <div class="id">{{hct.nCaso_ID}}</div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{hct.nCasoStatus}}</h4>
+            <div class="pull-right">
+              <button class="btn btn-case" ng-click="findSubCases(hct.nCaso_ID)"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+            <p><b>Tipificación:</b> {{hct.tipificacion}} <b>Descripción:</b> {{hct.descripcion}} <br /><b>Tipifico:</b> {{hct.cLogin_Apellidos}} {{hct.cLogin_Nombre}}</p>
+            <small>In: {{hct.fechainicio}} Fn: {{hct.fechafin}}</small>
+          </div>
+        </div>
+        <div class="panel" ng-show="subT == 1">
+          <h3 class="text-center">Historial Tuits</h3>
+          <div class="media" ng-repeat="subcaset in subcaseT">
+            <div class="pull-left">
+              <img class="media-object" src="{{subcaset.profileimg}}" alt="{{subcaset.userName}}">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{subcaset.userName}}</h4>
+              <p>{{subcaset.hystorial}}</p>
+              <small>{{subcaset.dateCreated}}</small>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3 panel-about">
+      <div ng-if="checkprofileinfoT == '-1'"><span class="error">No existe la información del Perfil</span></div>
+      <div ng-if="checkprofileinfoT != '-1'">
+        <h3>Informacion</h3>
+        <ul class="list-group info" ng-repeat="info in infoCT">
+          <li class="list-group-item"><span class="glyphicon glyphicon-user"></span> {{info.cNombre}}</li>
+          <li class="list-group-item"><span class="glyphicon glyphicon-qrcode"></span> {{info.nDN}}</li>
+          <li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> {{info.cEmail}}</li>
+          <li class="list-group-item"><span class="glyphicon glyphicon-phone-alt"></span> {{info.nTelefono1}}</li>
+          <li class="list-group-item"><span class="glyphicon glyphicon-phone-alt"></span> {{info.nTelefono2}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Facebook -->
+  <div ng-hide= "panelcasesFb == 0" class="row">
+    <div class="col-md-3 info-profile">
+      <div class="avatar-full" style="background-image: url('{{facebookinfo[0].Foto}}') !important;"></div>
+      <div class="name">{{facebookinfo[0].cname}}</div>
+      <ul class="row social">
+        <li class="col-xs-4 col-sm-4 col-md-4 socialphy"></li>
+        <li class="col-xs-4 col-sm-4 col-md-4 socialphy">Amigos <span>{{facebookinfo[0].Amigos}}</span></li>
+        <li class="col-xs-4 col-sm-4 col-md-4 socialphy"></li>
+      </ul>
+    </div>
+    <div class="col-md-6 panel-cases">
+      <div class="media" ng-repeat="findFcase in findFbcases">
+        <div class="pull-left">
+          <img class="media-object" src="img/facebook_64.png" alt="Case facebook">
+          <div class="id">{{findFcase.u1}}</div>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">{{findFcase.u5}}</h4>
+          <div class="pull-right">
+            <button class="btn btn-case" ng-click="findFaceSubCases(findFcase.u1)"><span class="glyphicon glyphicon-search"></span></button>
+          </div>
+          <p><b>Tipificación:</b> {{findFcase.u6}} <b>Descripción:</b> {{findFcase.u7}}</p>
+          <small>In: {{findFcase.u3}} Fn: {{findFcase.u4}}</small>
+        </div>
+      </div>
+      <div class="panel" ng-hide= "subF == 0">
+        <h3 class="text-center">Historial Facebook</h3>
+        <div class="media" ng-repeat="subcase in subcaseF">
+          <div class="pull-left">
+            <img class="media-object img-thumbnail" src="{{subcase.profileimg}}" alt="{{subcase.userName}}">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{subcase.userName}}</h4>
+            <p>{{subcase.hystorial}}</p>
+            <small>{{subcase.dateCreated}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 panel-about">
+      <h3>Informacion</h3>
+      <div ng-if="facebookinfo[0].cNombre == null"><span class="error">No existe la información del Perfil</span></div>
+    </div>
+  </div>
+</div>

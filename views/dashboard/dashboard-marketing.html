@@ -1,0 +1,241 @@
+<div ng-show="status.nodo == null" ng-controller="MarketingCtrl">
+  <span class="text-error">No Tiene permisos</span>
+</div>
+<div  ng-show="status.nodo == 1" class="container" ng-controller="MarketingCtrl">
+  <h4 class="text-center">marketing</h4>
+  <div ng-show="load" class="spinner-64"></div>
+  <div class="row dashboard" ng-repeat="status in general">
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Firmados</span>
+      <div  class="circle">
+        <span class="param">{{status.Firmados}}</span>
+      </div>
+      <span class="camo">1</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Disponibles</span>
+      <div  class="circle">
+        <span class="param">{{status.Disponibles}}</span>
+      </div>
+      <span class="camo">2</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">No Disponibles</span>
+      <div class="circle">
+        <span class="param">{{status.NoDisponibles}}</span>
+      </div>
+      <span class="camo">3</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Atención</span>
+      <div  class="circle">
+        <span class="param">{{status.EnAtencion}}</span>
+      </div>
+      <span class="camo">4</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Reunión</span>
+      <div  class="circle">
+        <span class="param">{{status.Reunion}}</span>
+      </div>
+      <span class="camo">5</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Descanso</span>
+      <div  class="circle">
+        <span class="param">{{status.Descanso}}</span>
+      </div>
+      <span class="camo">6</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Baño</span>
+      <div  class="circle">
+        <span class="param">{{status.Bano}}</span>
+      </div>
+      <span class="camo">7</span>
+    </div>
+    <!-- //First Block -->
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Recibidas</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHRec}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbhRec}} <i class="icon-twitter"></i>{{status.thRec}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Atendidas</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHAte}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbhAte}} <i class="icon-twitter"></i>{{status.thAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Espera</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHEsp}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbhEsp}} <i class="icon-twitter"></i>{{status.thEsp}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Atención</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHEnAte}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbhEnAte}} <i class="icon-twitter"></i>{{status.thEnAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Descartadas</span>
+      <div  class="circle2">
+        <span class="param">{{TotalHDes}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbhDes}} <i class="icon-twitter"></i>{{status.thDes}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">TME</span>
+      <div  class="circle2">
+        <div class="minutes">
+          <span ng-if="ME > '10'">m{{ ME | limitTo: 4 }}</span>
+          <span ng-if="ME <= '9'">m0{{ ME | limitTo: 4 }}</span>
+        </div>
+      </div>
+      <div class="text-button">
+        <i class="icon-facebook"></i><span ng-if="fbTME > '10'"> {{ fbTME | limitTo:4 }} </span> <span ng-if="fbTME <= '9'">   0{{ fbTME | limitTo:4 }} </span>
+        <i class="icon-twitter"></i>0{{ TME | limitTo:4 }}
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">TMO</span>
+      <div  class="circle2">
+        <div class="minutes">
+          <span ng-if="ME > '10'">m{{ MO | limitTo: 4 }}</span>
+          <span ng-if="ME <= '9'">m0{{ MO | limitTo: 4 }}</span>
+        </div>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>0{{ fbTMO | limitTo: 4 }} <i class="icon-twitter"></i>0{{ TMO | limitTo: 4}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Nivel de Servicio</span>
+      <div  class="circle2">
+        <span class="param">{{status.NivelServicio}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbNivelServicio}} <i class="icon-twitter"></i>{{status.fbNivelServicio}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Casos</span>
+      <div  class="circle2">
+        <span class="param">{{TotalCases}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbCasos}} <i class="icon-twitter"></i>{{status.tCasos}}</span>
+    </div>
+    <!-- //Second Block -->
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Pendientes en Horario D/A</span>
+      <div  class="circle3">
+        <span class="param">{{TotalAte}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbadRec}} <i class="icon-twitter"></i>{{status.tadRec}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Atendidas</span>
+      <div  class="circle3">
+        <span class="param">{{TotalAte}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbadAte}} <i class="icon-twitter"></i>{{status.tadAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Atención</span>
+      <div  class="circle3">
+        <span class="param">{{TotalEnAte}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbadEnAte}} <i class="icon-twitter"></i>{{status.tadEnAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Espera</span>
+      <div  class="circle3">
+        <span class="param">{{TotalEsp}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbadEnAte}} <i class="icon-twitter"></i>{{status.tadEnAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Descartadas</span>
+      <div  class="circle3">
+        <span class="param">{{TotalDes}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbadEnAte}} <i class="icon-twitter"></i>{{status.tadEnAte}}</span>
+    </div>
+
+    <!-- //Third Block -->
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Categoría</span>
+      <div class="circle4">
+        <span class="param">{{TCgen}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbCgen}}<i class="icon-twitter"></i>{{status.tCgen}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Escalados</span>
+      <div class="circle4">
+        <span class="param">{{TCesc}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbCesc}}<i class="icon-twitter"></i>{{status.tCesc}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Revisados</span>
+      <div class="circle4">
+        <span class="param">{{TCrev}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbCrev}}<i class="icon-twitter"></i>{{status.tCrev}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Fuera del Horario</span>
+      <div class="circle4">
+        <span class="param">{{TfRec}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbfRec}}<i class="icon-twitter"></i>{{status.tfRec}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Atendidas</span>
+      <div class="circle4">
+        <span class="param">{{TfAte}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbfAte}}<i class="icon-twitter"></i>{{status.tfAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Espera</span>
+      <div class="circle4">
+        <span class="param">{{TfEsp}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbfEsp}}<i class="icon-twitter"></i>{{status.tfEsp}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">En Atención</span>
+      <div class="circle4">
+        <span class="param">{{TfEnAte}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbfEnAte}}<i class="icon-twitter"></i>{{status.tfEnAte}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">Descartadas</span>
+      <div class="circle4">
+        <span class="param">{{TfDes}}</span>
+      </div>
+      <span class="text-button"><i class="icon-facebook"></i>{{status.fbfDes}}<i class="icon-twitter"></i>{{status.tfDes}}</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 well-sm">
+      <span class="text-top">TME Fuera</span>
+      <div class="circle4">
+        <div class="minutes">
+          <span ng-if="AllMEout > '10'">{{ AllMEout | limitTo: 4 }}</span>
+          <span ng-if="AllMEout <= '9'">0{{ AllMEout | limitTo: 4 }}</span>
+        </div>
+      </div>
+      <span class="text-button">
+        <i class="icon-facebook"></i>{{status.fbtmeFuera}}
+        <i class="icon-twitter"></i>{{status.tmeFuera}}
+      </span>
+    </div>
+
+  </div><!-- //Row -->
+</div>
