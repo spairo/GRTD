@@ -44,21 +44,20 @@
 								<div class="modal-header">
 									<button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 									</button>
-									<h4 class="modal-title" id="myModalLabel">Iniciar Sesión</h4>
+									<h4 class="modal-title" id="myModalLabel">Iniciar Sesión {{$scope.result[0].Error}}</h4>
 								</div>
 								<div class="modal-body" ng-controller="LoginCtrl">
 									<form name="userForm" novalidate>
+										<span class="error">{{$scope.resultlogin}}</span>
 										<div class="form-group" ng-class="{ 'has-error' : userForm.cLogin.$invalid && userForm.cLogin.$dirty && !userForm.cLogin.$pristine, 'has-summer': userForm.cLogin.$valid }">
-												<label>Usuario</label>
-												<input type="text" name="cLogin" class="form-control input-lg" ng-model="login.cLogin" required>
-												<p ng-show="userForm.cLogin.$invalid && !userForm.cLogin.$pristine" class="help-block">Your user is required.</p>
+											<input type="text" name="cLogin" class="form-control input-lg" ng-model="login.cLogin" placeholder="Usuario" required>
+											<p ng-show="userForm.cLogin.$invalid && !userForm.cLogin.$pristine" class="help-block">Your user is required.</p>
 										</div>
 										<div class="form-group" ng-class="{ 'has-error' : userForm.cPass.$invalid && userForm.cLogin.$dirty &&!userForm.cPass.$pristine, 'has-summer': userForm.cPass.$valid }">
-												<label>Contraseña</label>
-												<input type="password" name="cPass" class="form-control input-lg" ng-model="login.cPass" required>
-												<p ng-show="userForm.cPass.$invalid && !userForm.cPass.$pristine" class="help-block">Your password is required.</p>
+											<input type="password" name="cPass" class="form-control input-lg" ng-model="login.cPass" placeholder="Contraseña" required>
+											<p ng-show="userForm.cPass.$invalid && !userForm.cPass.$pristine" class="help-block">Your password is required.</p>
 										</div>
-										<button class="btn flat-button" ng-disabled="userForm.$invalid" ng-click="Login()"><span class="glyphicon glyphicon-log-in"></span> Ingresar</button>
+										<button class="flat-button" ng-disabled="userForm.$invalid" ng-click="Login()"><span class="glyphicon glyphicon-log-in"></span> Ingresar</button>
 									</form>
 								</div>
 							</script>

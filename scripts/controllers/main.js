@@ -359,14 +359,15 @@ Grtdapp.controller('LoginCtrl', function($scope, $http, $modalStack, LoginServic
     })
     .success(function(data, status){
 
-      var Error = data[0].Error;
-      var Nombre =  data[0].Nombre;
+          var Error = data[0].Error;
+          var Nombre = data[0].Nombre;
 
-      $scope.LoginServ = LoginService;
-      $scope.LoginServ.nodo = Error;
-      $scope.LoginServ.name = Nombre;
+          $scope.LoginServ = LoginService;
+          $scope.LoginServ.nodo = Error;
+          $scope.LoginServ.name = Nombre;
 
-      $modalStack. dismissAll();
+          $modalStack. dismissAll();
+
     })
     .error(function(data, status){
       console.error("Login >>>", status, "Oops!");
